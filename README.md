@@ -104,5 +104,3 @@ technopark-db-api
 * [unsubscribe](./doc/thread/unsubscribe.md)
 * [update](./doc/thread/update.md)
 * [vote](./doc/thread/vote.md)
-
-# DataBase-db-api
