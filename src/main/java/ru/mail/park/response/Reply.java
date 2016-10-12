@@ -1,4 +1,4 @@
-package ru.mail.park.dao;
+package ru.mail.park.response;
 
 /**
  * Created by zac on 11.10.16.

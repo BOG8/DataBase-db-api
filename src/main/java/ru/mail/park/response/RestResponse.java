@@ -1,7 +1,4 @@
-package ru.mail.park.controllers;
-
-import ru.mail.park.dao.Reply;
-import ru.mail.park.dao.Status;
+package ru.mail.park.response;
 
 /**
  * Created by zac on 11.10.16.

@@ -2,8 +2,8 @@ package ru.mail.park.dao.impl;
 
 import com.google.gson.JsonParser;
 import ru.mail.park.dao.ForumDAO;
-import ru.mail.park.dao.Reply;
-import ru.mail.park.dao.Status;
+import ru.mail.park.response.Reply;
+import ru.mail.park.response.Status;
 import ru.mail.park.model.Forum;
 
 import javax.sql.DataSource;
@@ -42,6 +42,7 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
+
         return new Reply(Status.OK, forum);
     }
 

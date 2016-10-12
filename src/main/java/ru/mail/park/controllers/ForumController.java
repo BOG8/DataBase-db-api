@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ru.mail.park.dao.ForumDAO;
 import ru.mail.park.dao.impl.ForumDAOImpl;
+import ru.mail.park.response.RestResponse;
 
 /**
  * Created by zac on 11.10.16.

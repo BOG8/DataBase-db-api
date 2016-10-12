@@ -1,12 +1,10 @@
 package ru.mail.park.dao.impl;
 
 import ru.mail.park.dao.BaseDAO;
-import ru.mail.park.dao.Reply;
-import ru.mail.park.dao.Status;
-import ru.mail.park.dao.TExecutor;
+import ru.mail.park.response.Reply;
+import ru.mail.park.response.Status;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
