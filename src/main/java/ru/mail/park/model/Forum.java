@@ -1,5 +1,7 @@
 package ru.mail.park.model;
 
+import com.google.gson.JsonObject;
+
 /**
  * Created by zac on 09.10.16.
  */
@@ -13,8 +15,22 @@ public class Forum {
 
     private long id;
     private String name;
-    private String short_name;
+    private String shortName;
     private String user;
+
+    public Forum(long id, String name, String shortName, String user) {
+        this.id = id;
+        this.name = name;
+        this.shortName = shortName;
+        this.user = user;
+    }
+
+    public Forum(JsonObject object) {
+        id = object.has("id") ? object.get("id").getAsInt() : 0;
+        name = object.get("name").getAsString();
+        shortName = object.get("short_name").getAsString();
+        user = object.get("user").getAsString();
+    }
 
     public long getId() {
         return id;
@@ -32,12 +48,12 @@ public class Forum {
         this.name = name;
     }
 
-    public String getShort_name() {
-        return short_name;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setShort_name(String short_name) {
-        this.short_name = short_name;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public String getUser() {
@@ -46,5 +62,13 @@ public class Forum {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return ID_COLUMN + id + "\n" +
+                NAME_COLUMN + name + "\n" +
+                SHORTNAME_COLUMN + shortName + "\n" +
+                USER_COLUMN + user;
     }
 }
