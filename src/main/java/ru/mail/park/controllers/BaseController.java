@@ -13,8 +13,12 @@ import javax.sql.DataSource;
 
 @RestController
 public abstract class BaseController {
+    protected final DataSource dataSource;
+
     @Autowired
-    protected DataSource dataSource;
+    public BaseController(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @PostConstruct
     void init() {

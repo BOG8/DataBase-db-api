@@ -26,10 +26,10 @@ public class Forum {
     }
 
     public Forum(JsonObject object) {
-        id = object.has("id") ? object.get("id").getAsInt() : 0;
-        name = object.get("name").getAsString();
-        shortName = object.get("short_name").getAsString();
-        user = object.get("user").getAsString();
+        id = object.has(ID_COLUMN) ? object.get(ID_COLUMN).getAsInt() : 0;
+        name = object.get(NAME_COLUMN).getAsString();
+        shortName = object.get(SHORTNAME_COLUMN).getAsString();
+        user = object.get(USER_COLUMN).getAsString();
     }
 
     public long getId() {
@@ -64,11 +64,4 @@ public class Forum {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return ID_COLUMN + id + "\n" +
-                NAME_COLUMN + name + "\n" +
-                SHORTNAME_COLUMN + shortName + "\n" +
-                USER_COLUMN + user;
-    }
 }

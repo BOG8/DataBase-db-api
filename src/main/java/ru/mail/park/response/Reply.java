@@ -1,5 +1,7 @@
 package ru.mail.park.response;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * Created by zac on 11.10.16.
  */
@@ -16,7 +18,7 @@ public class Reply {
         return object;
     }
 
-    public Reply(Integer code, Object object) {
+    public Reply(Integer code, @Nullable Object object) {
         this.code = code;
         this.object = object;
     }

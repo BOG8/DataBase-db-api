@@ -1,5 +1,7 @@
 package ru.mail.park.model;
 
+import com.google.gson.JsonObject;
+
 /**
  * Created by zac on 09.10.16.
  */
@@ -19,6 +21,24 @@ public class User {
     private boolean isAnonymous;
     private String name;
     private String username;
+
+    public User(String about, String email, long id, boolean isAnonymous, String name, String username) {
+        this.about = about;
+        this.email = email;
+        this.id = id;
+        this.isAnonymous = isAnonymous;
+        this.name = name;
+        this.username = username;
+    }
+
+    public User(JsonObject object) {
+        about = object.get(ABOUT_COLUMN).getAsString();
+        email = object.get(EMAIL_COLUMN).getAsString();
+        id = object.has(ID_COLUMN) ? object.get(ID_COLUMN).getAsInt() : 0;
+        isAnonymous = object.has(ISANONYMOUS_COLUMN) && object.get(ISANONYMOUS_COLUMN).getAsBoolean();
+        name = object.get(NAME_COLUMN).getAsString();
+        username = object.get(USERNAME_COLUMN).getAsString();
+    }
 
     public String getAbout() {
         return about;

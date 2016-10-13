@@ -12,11 +12,12 @@ import java.sql.SQLException;
  */
 
 public class BaseDAOImpl implements BaseDAO {
+    public static final int ALREADY_EXIST = 1062;
     protected String tableName = "";
     protected DataSource dataSource;
 
     protected Reply handeSQLException(SQLException e) {
-        if (e.getErrorCode() == 1062) {
+        if (e.getErrorCode() == ALREADY_EXIST) {
             return new Reply(Status.ALREADY_EXIST);
         } else {
             return new Reply(Status.UNKNOWN_ERROR);

@@ -1,4 +1,4 @@
-package ru.mail.park.dao;
+package ru.mail.park;
 
 import org.apache.commons.dbcp.ConnectionFactory;
 import org.apache.commons.dbcp.DriverManagerConnectionFactory;
@@ -15,8 +15,10 @@ import javax.sql.DataSource;
  */
 
 @Configuration
-public class DatabaseHelper {
+public class DataBaseConnector {
 
+    public static final int MAX_IDLE = 30;
+    public static final int MAX_ACTIVE = 200;
     private static DataSource dataSource;
 
     @Bean
@@ -31,19 +33,17 @@ public class DatabaseHelper {
             e.printStackTrace();
         }
 
-        StringBuilder builder = new StringBuilder();
+        final GenericObjectPool genericObjectPool = new GenericObjectPool();
+        genericObjectPool.setMaxIdle(MAX_IDLE);
+        genericObjectPool.setMaxActive(MAX_ACTIVE);
+
+        final StringBuilder builder = new StringBuilder();
         builder.append("jdbc:mysql://localhost:3306/");
         builder.append("ForumDB?");
         builder.append("useSSL=false&useUnicode=true&characterEncoding=utf8&autoReconnect=true");
 
-        GenericObjectPool genericObjectPool = new GenericObjectPool();
-        genericObjectPool.setMaxIdle(30);
-        genericObjectPool.setMaxActive(200);
-
-        ConnectionFactory connectionFactory = new DriverManagerConnectionFactory(
-                builder.toString(),
-                "root",
-                "");
+        final ConnectionFactory connectionFactory = new DriverManagerConnectionFactory(
+                builder.toString(), "root", "");
 
         PoolableConnectionFactory poolableConnectionFactory =
                 new PoolableConnectionFactory(connectionFactory, genericObjectPool,
