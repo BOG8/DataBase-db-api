@@ -15,4 +15,5 @@ public interface PostDAO extends BaseDAO {
 
     Reply restore(String jsonString);
 
+    Reply update(String jsonString);
 }

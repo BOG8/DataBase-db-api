@@ -48,5 +48,8 @@ public class PostController extends BaseController {
         return new RestResponse(postDAO.restore(body));
     }
 
-
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public RestResponse update(@RequestBody String body){
+        return new RestResponse(postDAO.update(body));
+    }
 }
