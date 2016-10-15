@@ -32,7 +32,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
             try (PreparedStatement ps = connection.prepareStatement(query.toString(), Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, user.getAbout());
                 ps.setString(2, user.getEmail());
-                ps.setBoolean(3, user.isAnonymous());
+                ps.setBoolean(3, user.getIsAnonymous());
                 ps.setString(4, user.getName());
                 ps.setString(5, user.getUsername());
                 ps.executeUpdate();

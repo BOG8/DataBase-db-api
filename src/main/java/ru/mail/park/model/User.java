@@ -64,7 +64,7 @@ public class User {
         this.id = id;
     }
 
-    public boolean isAnonymous() {
+    public boolean getIsAnonymous() {
         return isAnonymous;
     }
 

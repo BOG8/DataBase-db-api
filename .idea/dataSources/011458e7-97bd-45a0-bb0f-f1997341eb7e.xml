@@ -224,7 +224,6 @@
       <data-type>varchar(255)|0</data-type>
     </column>
     <column id="58" parent="8" name="parent">
-      <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
     </column>
     <column id="59" parent="8" name="thread">

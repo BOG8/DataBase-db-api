@@ -64,7 +64,7 @@ public class Thread {
         this.id = id;
     }
 
-    public boolean isClosed() {
+    public boolean getIsClosed() {
         return isClosed;
     }
 
@@ -72,7 +72,7 @@ public class Thread {
         this.isClosed = isClosed;
     }
 
-    public boolean isDeleted() {
+    public boolean getIsDeleted() {
         return isDeleted;
     }
 

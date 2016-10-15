@@ -1,6 +1,6 @@
 package ru.mail.park.model;
 
-import java.time.LocalDateTime;
+import com.google.gson.JsonObject;
 
 /**
  * Created by zac on 09.10.16.
@@ -21,7 +21,7 @@ public class Post {
     public static final String THREAD_COLUMN = "thread";
     public static final String USER_COLUMN = "user";
 
-    private LocalDateTime date;
+    private String date;
     private String forum;
     private long id;
     private boolean isApproved;
@@ -30,15 +30,30 @@ public class Post {
     private boolean isHighlighted;
     private boolean isSpam;
     private String message;
-    private long parent;
+    private Long parent;
     private long thread;
     private String user;
 
-    public LocalDateTime getDate() {
+    public Post(JsonObject object) {
+        date = object.get(DATE_COLUMN).getAsString();
+        forum = object.get(FORUM_COLUMN).getAsString();
+        id = object.has(ID_COLUMN) ? object.get(ID_COLUMN).getAsInt() : 0;
+        isApproved = object.has(ISAPPROVED_COLUMN) && object.get(ISAPPROVED_COLUMN).getAsBoolean();
+        isDeleted = object.has(ISDELETED_COLUMN) && object.get(ISDELETED_COLUMN).getAsBoolean();
+        isEdited = object.has(ISEDITED_COLUMN) && object.get(ISEDITED_COLUMN).getAsBoolean();
+        isHighlighted = object.has(ISHIGHLIGHTED_COLUMN) && object.get(ISHIGHLIGHTED_COLUMN).getAsBoolean();
+        isSpam = object.has(ISSPAM_COLUMN) && object.get(ISSPAM_COLUMN).getAsBoolean();
+        message = object.get(MESSAGE_COLUMN).getAsString();
+        parent = object.has(PARENT_COLUMN) ? object.get(PARENT_COLUMN).getAsLong() : null;
+        thread = object.get(THREAD_COLUMN).getAsLong();
+        user = object.get(USER_COLUMN).getAsString();
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -58,7 +73,7 @@ public class Post {
         this.id = id;
     }
 
-    public boolean isApproved() {
+    public boolean getIsApproved() {
         return isApproved;
     }
 
@@ -66,7 +81,7 @@ public class Post {
         this.isApproved = isApproved;
     }
 
-    public boolean isDeleted() {
+    public boolean getIsDeleted() {
         return isDeleted;
     }
 
@@ -74,7 +89,7 @@ public class Post {
         this.isDeleted = isDeleted;
     }
 
-    public boolean isEdited() {
+    public boolean getIsEdited() {
         return isEdited;
     }
 
@@ -82,7 +97,7 @@ public class Post {
         this.isEdited = isEdited;
     }
 
-    public boolean isHighlighted() {
+    public boolean getIsHighlighted() {
         return isHighlighted;
     }
 
@@ -90,7 +105,7 @@ public class Post {
         this.isHighlighted = isHighlighted;
     }
 
-    public boolean isSpam() {
+    public boolean getIsSpam() {
         return isSpam;
     }
 
@@ -106,11 +121,11 @@ public class Post {
         this.message = message;
     }
 
-    public long getParent() {
+    public Long getParent() {
         return parent;
     }
 
-    public void setParent(long parent) {
+    public void setParent(Long parent) {
         this.parent = parent;
     }
 

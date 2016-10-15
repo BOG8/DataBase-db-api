@@ -30,7 +30,7 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
             query.append("(name, short_name, user) VALUES (?, ?, ?)");
             try (PreparedStatement ps = connection.prepareStatement(query.toString(), Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, forum.getName());
-                ps.setString(2, forum.getShortName());
+                ps.setString(2, forum.getShort_name());
                 ps.setString(3, forum.getUser());
                 ps.executeUpdate();
                 try (ResultSet resultSet = ps.getGeneratedKeys()) {
