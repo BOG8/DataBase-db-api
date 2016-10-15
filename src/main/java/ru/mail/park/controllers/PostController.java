@@ -30,8 +30,12 @@ public class PostController extends BaseController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public RestResponse create(@RequestBody String body){
+    public RestResponse create(@RequestBody String body) {
         return new RestResponse(postDAO.create(body));
     }
 
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public RestResponse remove(@RequestBody String body) {
+        return new RestResponse(postDAO.remove(body));
+    }
 }

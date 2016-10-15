@@ -1,6 +1,7 @@
 package ru.mail.park.dao.impl;
 
 import com.google.gson.JsonParser;
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import ru.mail.park.dao.ForumDAO;
 import ru.mail.park.response.Reply;
 import ru.mail.park.response.Status;
@@ -25,10 +26,10 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
         final Forum forum;
         try (Connection connection = dataSource.getConnection()){
             forum = new Forum(new JsonParser().parse(jsonString).getAsJsonObject());
-            final StringBuilder query = new StringBuilder("INSERT INTO ");
-            query.append(tableName);
-            query.append("(name, short_name, user) VALUES (?, ?, ?)");
-            try (PreparedStatement ps = connection.prepareStatement(query.toString(), Statement.RETURN_GENERATED_KEYS)) {
+            String query = new StringBuilder("INSERT INTO ")
+                    .append(tableName)
+                    .append("(name, short_name, user) VALUES (?, ?, ?)").toString();
+            try (PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, forum.getName());
                 ps.setString(2, forum.getShort_name());
                 ps.setString(3, forum.getUser());

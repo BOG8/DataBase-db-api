@@ -190,88 +190,103 @@
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <column id="50" parent="8" name="forum">
+    <column id="50" parent="8" name="dislikes">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="51" parent="8" name="forum">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="51" parent="8" name="id">
+    <column id="52" parent="8" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="52" parent="8" name="isApproved">
+    <column id="53" parent="8" name="isApproved">
       <mandatory>1</mandatory>
       <data-type>tinyint(1)|0</data-type>
     </column>
-    <column id="53" parent="8" name="isDeleted">
+    <column id="54" parent="8" name="isDeleted">
       <mandatory>1</mandatory>
       <data-type>tinyint(1)|0</data-type>
     </column>
-    <column id="54" parent="8" name="isEdited">
+    <column id="55" parent="8" name="isEdited">
       <mandatory>1</mandatory>
       <data-type>tinyint(1)|0</data-type>
     </column>
-    <column id="55" parent="8" name="isHighlighted">
+    <column id="56" parent="8" name="isHighlighted">
       <mandatory>1</mandatory>
       <data-type>tinyint(1)|0</data-type>
     </column>
-    <column id="56" parent="8" name="isSpam">
+    <column id="57" parent="8" name="isSpam">
       <mandatory>1</mandatory>
       <data-type>tinyint(1)|0</data-type>
     </column>
-    <column id="57" parent="8" name="message">
+    <column id="58" parent="8" name="likes">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="59" parent="8" name="message">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="58" parent="8" name="parent">
+    <column id="60" parent="8" name="parent">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="59" parent="8" name="thread">
+    <column id="61" parent="8" name="points">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="62" parent="8" name="thread">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="60" parent="8" name="user">
+    <column id="63" parent="8" name="user">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <index id="61" parent="8" name="Post_Forum_short_name_fk">
+    <index id="64" parent="8" name="Post_Forum_short_name_fk">
       <columns>forum</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="62" parent="8" name="Post_id_uindex">
+    <index id="65" parent="8" name="Post_id_uindex">
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="63" parent="8" name="Post_Thread_id_fk">
+    <index id="66" parent="8" name="Post_Thread_id_fk">
       <columns>thread</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="64" parent="8" name="Post_User_email_fk">
+    <index id="67" parent="8" name="Post_User_email_fk">
       <columns>user</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="65" parent="8" name="PRIMARY">
+    <key id="68" parent="8" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <key id="66" parent="8" name="Post_id_uindex">
+    <key id="69" parent="8" name="Post_id_uindex">
       <columns>id</columns>
       <underlying-index>Post_id_uindex</underlying-index>
     </key>
-    <foreign-key id="67" parent="8" name="Post_Forum_short_name_fk">
+    <foreign-key id="70" parent="8" name="Post_Forum_short_name_fk">
       <columns>forum</columns>
       <ref-key>~.Forum.Forum_short_name_uindex</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="68" parent="8" name="Post_Thread_id_fk">
+    <foreign-key id="71" parent="8" name="Post_Thread_id_fk">
       <columns>thread</columns>
       <ref-key>~.Thread.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="69" parent="8" name="Post_User_email_fk">
+    <foreign-key id="72" parent="8" name="Post_User_email_fk">
       <columns>user</columns>
       <ref-key>~.User.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>

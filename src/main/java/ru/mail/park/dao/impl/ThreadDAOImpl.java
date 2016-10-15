@@ -25,10 +25,10 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
         final Thread thread;
         try (Connection connection = dataSource.getConnection()){
             thread = new Thread(new JsonParser().parse(jsonString).getAsJsonObject());
-            final StringBuilder query = new StringBuilder("INSERT INTO ");
-            query.append(tableName);
-            query.append("(date, forum, isClosed, isDeleted, message, slug, title, user) ");
-            query.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            String query = new StringBuilder("INSERT INTO ")
+                    .append(tableName)
+                    .append("(date, forum, isClosed, isDeleted, message, slug, title, user) ")
+                    .append("VALUES (?, ?, ?, ?, ?, ?, ?, ?)").toString();
             try (PreparedStatement ps = connection.prepareStatement(query.toString(), Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, thread.getDate());
                 ps.setString(2, thread.getForum());

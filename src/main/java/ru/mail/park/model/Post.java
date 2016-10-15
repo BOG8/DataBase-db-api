@@ -22,6 +22,7 @@ public class Post {
     public static final String USER_COLUMN = "user";
 
     private String date;
+    private long dislikes;
     private String forum;
     private long id;
     private boolean isApproved;
@@ -29,13 +30,16 @@ public class Post {
     private boolean isEdited;
     private boolean isHighlighted;
     private boolean isSpam;
+    private long likes;
     private String message;
     private Long parent;
+    private long points;
     private long thread;
     private String user;
 
     public Post(JsonObject object) {
         date = object.get(DATE_COLUMN).getAsString();
+        dislikes = 0;
         forum = object.get(FORUM_COLUMN).getAsString();
         id = object.has(ID_COLUMN) ? object.get(ID_COLUMN).getAsInt() : 0;
         isApproved = object.has(ISAPPROVED_COLUMN) && object.get(ISAPPROVED_COLUMN).getAsBoolean();
@@ -43,8 +47,10 @@ public class Post {
         isEdited = object.has(ISEDITED_COLUMN) && object.get(ISEDITED_COLUMN).getAsBoolean();
         isHighlighted = object.has(ISHIGHLIGHTED_COLUMN) && object.get(ISHIGHLIGHTED_COLUMN).getAsBoolean();
         isSpam = object.has(ISSPAM_COLUMN) && object.get(ISSPAM_COLUMN).getAsBoolean();
+        likes = 0;
         message = object.get(MESSAGE_COLUMN).getAsString();
         parent = object.has(PARENT_COLUMN) ? object.get(PARENT_COLUMN).getAsLong() : null;
+        points = 0;
         thread = object.get(THREAD_COLUMN).getAsLong();
         user = object.get(USER_COLUMN).getAsString();
     }
@@ -55,6 +61,14 @@ public class Post {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public long getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(long dislikes) {
+        this.dislikes = dislikes;
     }
 
     public String getForum() {
@@ -113,6 +127,14 @@ public class Post {
         this.isSpam = isSpam;
     }
 
+    public long getLikes() {
+        return likes;
+    }
+
+    public void setLikes(long likes) {
+        this.likes = likes;
+    }
+
     public String getMessage() {
         return message;
     }
@@ -127,6 +149,14 @@ public class Post {
 
     public void setParent(Long parent) {
         this.parent = parent;
+    }
+
+    public long getPoints() {
+        return points;
+    }
+
+    public void setPoints(long points) {
+        this.points = points;
     }
 
     public long getThread() {

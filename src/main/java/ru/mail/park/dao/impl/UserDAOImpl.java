@@ -26,10 +26,10 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
         final User user;
         try (Connection connection = dataSource.getConnection()){
             user = new User(new JsonParser().parse(jsonString).getAsJsonObject());
-            final StringBuilder query = new StringBuilder("INSERT INTO ");
-            query.append(tableName);
-            query.append("(about, email, isAnonymous, name, username) VALUES (?, ?, ?, ?, ?)");
-            try (PreparedStatement ps = connection.prepareStatement(query.toString(), Statement.RETURN_GENERATED_KEYS)) {
+            String query = new StringBuilder("INSERT INTO ")
+                    .append(tableName)
+                    .append("(about, email, isAnonymous, name, username) VALUES (?, ?, ?, ?, ?)").toString();
+            try (PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, user.getAbout());
                 ps.setString(2, user.getEmail());
                 ps.setBoolean(3, user.getIsAnonymous());
