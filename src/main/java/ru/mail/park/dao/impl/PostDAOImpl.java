@@ -1,6 +1,7 @@
 package ru.mail.park.dao.impl;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ru.mail.park.dao.PostDAO;
 import ru.mail.park.model.Post;
@@ -58,6 +59,30 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
     }
 
     @Override
+    public Reply details(long postId, String[] related) {
+        Post post;
+        try (Connection connection = dataSource.getConnection()) {
+            String query = new StringBuilder("SELECT * FROM ")
+                    .append(tableName)
+                    .append(" WHERE id = ?").toString();
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setLong(1, postId);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    resultSet.next();
+
+                    post = new Post(resultSet);
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, post);
+    }
+
+    @Override
     public Reply remove(String jsonString) {
         try (Connection connection = dataSource.getConnection()) {
             Long post = new JsonParser().parse(jsonString).getAsJsonObject().get("post").getAsLong();
@@ -66,6 +91,26 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
                     .append(" SET isDeleted = 1 WHERE id = ?").toString();
             try (PreparedStatement ps = connection.prepareStatement(query)) {
                 ps.setLong(1, post);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                new Reply(Status.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
+    }
+
+    @Override
+    public Reply restore(String jsonString) {
+        try (Connection connection = dataSource.getConnection()) {
+            Long postId = new JsonParser().parse(jsonString).getAsJsonObject().get("post").getAsLong();
+            String query = new StringBuilder("UPDATE ")
+                    .append(tableName)
+                    .append(" SET isDeleted = 0 WHERE id = ?").toString();
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setLong(1, postId);
                 ps.executeUpdate();
             } catch (SQLException e) {
                 new Reply(Status.NOT_FOUND);

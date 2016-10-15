@@ -2,6 +2,8 @@ package ru.mail.park.model;
 
 import com.google.gson.JsonObject;
 
+import java.sql.ResultSet;
+
 /**
  * Created by zac on 09.10.16.
  */
@@ -9,6 +11,7 @@ import com.google.gson.JsonObject;
 public class Post {
     public static final String TABLE_NAME = "Post";
     public static final String DATE_COLUMN = "date";
+    public static final String DISLIKES_COLUMN = "dislikes";
     public static final String FORUM_COLUMN = "forum";
     public static final String ID_COLUMN = "id";
     public static final String ISAPPROVED_COLUMN = "isApproved";
@@ -16,8 +19,10 @@ public class Post {
     public static final String ISEDITED_COLUMN = "isEdited";
     public static final String ISHIGHLIGHTED_COLUMN = "isHighlighted";
     public static final String ISSPAM_COLUMN = "isSpam";
+    public static final String LIKES_COLUMN = "likes";
     public static final String MESSAGE_COLUMN = "message";
     public static final String PARENT_COLUMN = "parent";
+    public static final String POINTS_COLUMN = "points";
     public static final String THREAD_COLUMN = "thread";
     public static final String USER_COLUMN = "user";
 
@@ -53,6 +58,27 @@ public class Post {
         points = 0;
         thread = object.get(THREAD_COLUMN).getAsLong();
         user = object.get(USER_COLUMN).getAsString();
+    }
+
+    public Post(ResultSet resultSet) throws Exception {
+        date = resultSet.getString(DATE_COLUMN);
+        dislikes = resultSet.getLong(DISLIKES_COLUMN);
+        forum = resultSet.getString(FORUM_COLUMN);
+        id = resultSet.getLong(ID_COLUMN);
+        isApproved = resultSet.getBoolean(ISAPPROVED_COLUMN);
+        isDeleted = resultSet.getBoolean(ISDELETED_COLUMN);
+        isEdited = resultSet.getBoolean(ISEDITED_COLUMN);
+        isHighlighted = resultSet.getBoolean(ISHIGHLIGHTED_COLUMN);
+        isSpam = resultSet.getBoolean(ISSPAM_COLUMN);
+        likes = resultSet.getLong(LIKES_COLUMN);
+        message = resultSet.getString(MESSAGE_COLUMN);
+        parent = resultSet.getLong(PARENT_COLUMN);
+        points = resultSet.getLong(POINTS_COLUMN);
+        thread = resultSet.getLong(THREAD_COLUMN);
+        user = resultSet.getString(USER_COLUMN);
+        if (parent == 0) {
+            parent = null;
+        }
     }
 
     public String getDate() {

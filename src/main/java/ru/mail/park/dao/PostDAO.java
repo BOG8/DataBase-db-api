@@ -9,5 +9,10 @@ import ru.mail.park.response.Reply;
 public interface PostDAO extends BaseDAO {
     Reply create(String jsonString);
 
+    Reply details(long postId, String[] related);
+
     Reply remove(String jsonString);
+
+    Reply restore(String jsonString);
+
 }
