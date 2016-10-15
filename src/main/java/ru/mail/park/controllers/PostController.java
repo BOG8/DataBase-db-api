@@ -52,4 +52,9 @@ public class PostController extends BaseController {
     public RestResponse update(@RequestBody String body){
         return new RestResponse(postDAO.update(body));
     }
+
+    @RequestMapping(value = "/vote", method = RequestMethod.POST)
+    public RestResponse vote(@RequestBody String body){
+        return new RestResponse(postDAO.vote(body));
+    }
 }
