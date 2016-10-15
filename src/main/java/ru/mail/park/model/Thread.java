@@ -1,6 +1,6 @@
 package ru.mail.park.model;
 
-import java.time.LocalDateTime;
+import com.google.gson.JsonObject;
 
 /**
  * Created by zac on 09.10.16.
@@ -18,7 +18,7 @@ public class Thread {
     public static final String TITLE_COLUMN = "title";
     public static final String USER_COLUMN = "user";
 
-    private LocalDateTime date;
+    private String date;
     private String forum;
     private long id;
     private boolean isClosed;
@@ -28,11 +28,23 @@ public class Thread {
     private String title;
     private String user;
 
-    public LocalDateTime getDate() {
+    public Thread(JsonObject object) {
+        date = object.get(DATE_COLUMN).getAsString();
+        forum = object.get(FORUM_COLUMN).getAsString();
+        id = object.has(ID_COLUMN) ? object.get(ID_COLUMN).getAsInt() : 0;
+        isClosed = object.get(ISCLOSED_COLUMN).getAsBoolean();
+        isDeleted = object.has(ISDELETED_COLUMN) && object.get(ISDELETED_COLUMN).getAsBoolean();
+        message = object.get(MESSAGE_COLUMN).getAsString();
+        slug = object.get(SLUG_COLUMN).getAsString();
+        title = object.get(TITLE_COLUMN).getAsString();
+        user = object.get(USER_COLUMN).getAsString();
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
