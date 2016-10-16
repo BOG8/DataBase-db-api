@@ -37,12 +37,17 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "/follow", method = RequestMethod.POST)
-    public RestResponse follow(@RequestBody String data) {
-        return new RestResponse(userDAO.follow(data));
+    public RestResponse follow(@RequestBody String body) {
+        return new RestResponse(userDAO.follow(body));
     }
 
     @RequestMapping(value = "/unfollow", method = RequestMethod.POST)
-    public RestResponse unfollow(@RequestBody String data) {
-        return new RestResponse(userDAO.unfollow(data));
+    public RestResponse unfollow(@RequestBody String body) {
+        return new RestResponse(userDAO.unfollow(body));
+    }
+
+    @RequestMapping(value = "/updateProfile", method = RequestMethod.POST)
+    public RestResponse updateProfile(@RequestBody String body) {
+        return new RestResponse(userDAO.updateProfile(body));
     }
 }

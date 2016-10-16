@@ -101,7 +101,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
             return new Reply(Status.INVALID_REQUEST);
         }
 
-        return new Reply(Status.OK, details(follower).getObject());
+        return details(follower);
     }
 
     @Override
@@ -111,7 +111,6 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
             final JsonObject object = new JsonParser().parse(data).getAsJsonObject();
             follower = object.get("follower").getAsString();
             String followee = object.get("followee").getAsString();
-
             try {
                 String query = "DELETE FROM Followers WHERE user=? AND follower=?";
                 try (PreparedStatement ps = connection.prepareStatement(query)) {
@@ -125,6 +124,31 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
-        return new Reply(Status.OK, details(follower).getObject());
+
+        return details(follower);
+    }
+
+    @Override
+    public Reply updateProfile(String jsonString) {
+        String email;
+        try (Connection connection = dataSource.getConnection())  {
+            JsonObject object = new JsonParser().parse(jsonString).getAsJsonObject();
+            String about = object.get("about").getAsString();
+            email = object.get("user").getAsString();
+            String name = object.get("name").getAsString();
+            String query = "UPDATE " + tableName + " SET about=?, name=? WHERE email=?";
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setString(1, about);
+                ps.setString(2, name);
+                ps.setString(3, email);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e ) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return details(email);
     }
 }
