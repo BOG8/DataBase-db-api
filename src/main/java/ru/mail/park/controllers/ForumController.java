@@ -1,9 +1,6 @@
 package ru.mail.park.controllers;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.mail.park.dao.ForumDAO;
 import ru.mail.park.dao.impl.ForumDAOImpl;
 import ru.mail.park.response.RestResponse;
@@ -32,5 +29,11 @@ public class ForumController extends BaseController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public RestResponse create(@RequestBody String body){
         return new RestResponse(forumDAO.create(body));
+    }
+
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+    public RestResponse details(@RequestParam(value = "forum", required = true) String shortName,
+                                @RequestParam(value = "related", required = false) String[] related ) {
+        return new RestResponse(forumDAO.details(shortName, related));
     }
 }

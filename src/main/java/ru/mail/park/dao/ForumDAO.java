@@ -8,4 +8,6 @@ import ru.mail.park.response.Reply;
 
 public interface ForumDAO extends BaseDAO {
     Reply create(String jsonString);
+
+    Reply details(String shortName, String[] related);
 }

@@ -10,6 +10,7 @@ import ru.mail.park.response.Status;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.Arrays;
 
 /**
  * Created by zac on 15.10.16.
@@ -33,7 +34,7 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
                     .append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)").toString();
             try (PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, post.getDate());
-                ps.setString(2, post.getForum());
+                ps.setString(2, post.getForum().toString());
                 ps.setBoolean(3, post.getIsApproved());
                 ps.setBoolean(4, post.getIsDeleted());
                 ps.setBoolean(5, post.getIsEdited());
@@ -41,8 +42,8 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
                 ps.setBoolean(7, post.getIsSpam());
                 ps.setString(8, post.getMessage());
                 ps.setObject(9, post.getParent());
-                ps.setLong(10, post.getThread());
-                ps.setString(11, post.getUser());
+                ps.setLong(10, Long.parseLong(post.getThread().toString()));
+                ps.setString(11, post.getUser().toString());
                 ps.executeUpdate();
                 try (ResultSet resultSet = ps.getGeneratedKeys()) {
                     resultSet.next();
@@ -73,6 +74,18 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
                 }
             } catch (SQLException e) {
                 return new Reply(Status.NOT_FOUND);
+            }
+            if (related != null) {
+                if (Arrays.asList(related).contains("forum")) {
+                    post.setForum(new ForumDAOImpl(dataSource).details(post.getForum().toString(), null).getObject());
+                }
+                if (Arrays.asList(related).contains("thread")) {
+                    long threadId = Long.parseLong(post.getThread().toString());
+                    post.setThread(new ThreadDAOImpl(dataSource).details(threadId, null).getObject());
+                }
+                if (Arrays.asList(related).contains("user")) {
+                    post.setUser(new UserDAOImpl(dataSource).details(post.getUser().toString()).getObject());
+                }
             }
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);

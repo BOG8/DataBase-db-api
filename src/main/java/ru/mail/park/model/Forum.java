@@ -2,6 +2,8 @@ package ru.mail.park.model;
 
 import com.google.gson.JsonObject;
 
+import java.sql.ResultSet;
+
 /**
  * Created by zac on 09.10.16.
  */
@@ -16,7 +18,7 @@ public class Forum {
     private long id;
     private String name;
     private String shortName;
-    private String user;
+    private Object user;
 
     public Forum(long id, String name, String shortName, String user) {
         this.id = id;
@@ -30,6 +32,13 @@ public class Forum {
         name = object.get(NAME_COLUMN).getAsString();
         shortName = object.get(SHORTNAME_COLUMN).getAsString();
         user = object.get(USER_COLUMN).getAsString();
+    }
+
+    public Forum(ResultSet resultSet) throws Exception {
+        id = resultSet.getLong(ID_COLUMN);
+        name = resultSet.getString(NAME_COLUMN);
+        shortName = resultSet.getString(SHORTNAME_COLUMN);
+        user = resultSet.getString(USER_COLUMN);
     }
 
     public long getId() {
@@ -56,12 +65,11 @@ public class Forum {
         this.shortName = shortName;
     }
 
-    public String getUser() {
+    public Object getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(Object user) {
         this.user = user;
     }
-
 }

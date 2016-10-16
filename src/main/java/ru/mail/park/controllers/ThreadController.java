@@ -1,9 +1,6 @@
 package ru.mail.park.controllers;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.mail.park.dao.ThreadDAO;
 import ru.mail.park.dao.impl.ThreadDAOImpl;
 import ru.mail.park.response.RestResponse;
@@ -32,5 +29,11 @@ public class ThreadController extends BaseController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public RestResponse create(@RequestBody String body){
         return new RestResponse(threadDAO.create(body));
+    }
+
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+    public RestResponse details(@RequestParam(value = "thread", required = true) int threadId,
+                                @RequestParam(value = "related", required = false) String[] related) {
+        return new RestResponse(threadDAO.details(threadId, related));
     }
 }

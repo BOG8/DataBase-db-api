@@ -2,6 +2,8 @@ package ru.mail.park.model;
 
 import com.google.gson.JsonObject;
 
+import java.sql.ResultSet;
+
 /**
  * Created by zac on 09.10.16.
  */
@@ -19,14 +21,14 @@ public class Thread {
     public static final String USER_COLUMN = "user";
 
     private String date;
-    private String forum;
+    private Object forum;
     private long id;
     private boolean isClosed;
     private boolean isDeleted;
     private String message;
     private String slug;
     private String title;
-    private String user;
+    private Object user;
 
     public Thread(JsonObject object) {
         date = object.get(DATE_COLUMN).getAsString();
@@ -40,6 +42,18 @@ public class Thread {
         user = object.get(USER_COLUMN).getAsString();
     }
 
+    public Thread(ResultSet resultSet) throws Exception {
+        date = resultSet.getString(DATE_COLUMN);
+        forum = resultSet.getString(FORUM_COLUMN);
+        id = resultSet.getLong(ID_COLUMN);
+        isClosed = resultSet.getBoolean(ISCLOSED_COLUMN);
+        isDeleted = resultSet.getBoolean(ISDELETED_COLUMN);
+        message = resultSet.getString(MESSAGE_COLUMN);
+        slug = resultSet.getString(SLUG_COLUMN);
+        title = resultSet.getString(TITLE_COLUMN);
+        user = resultSet.getString(USER_COLUMN);
+    }
+
     public String getDate() {
         return date;
     }
@@ -48,11 +62,11 @@ public class Thread {
         this.date = date;
     }
 
-    public String getForum() {
+    public Object getForum() {
         return forum;
     }
 
-    public void setForum(String forum) {
+    public void setForum(Object forum) {
         this.forum = forum;
     }
 
@@ -104,11 +118,11 @@ public class Thread {
         this.title = title;
     }
 
-    public String getUser() {
+    public Object getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(Object user) {
         this.user = user;
     }
 }

@@ -32,9 +32,8 @@ public class PostController extends BaseController {
     }
 
     @RequestMapping(value = "/details", method = RequestMethod.GET)
-    public RestResponse details(@RequestParam(value = "post") long postId,
+    public RestResponse details(@RequestParam(value = "post", required = true) long postId,
                                 @RequestParam(value = "related", required = false) String[] related){
-
         return new RestResponse(postDAO.details(postId, related));
     }
 

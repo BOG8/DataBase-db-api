@@ -28,7 +28,7 @@ public class Post {
 
     private String date;
     private long dislikes;
-    private String forum;
+    private Object forum;
     private long id;
     private boolean isApproved;
     private boolean isDeleted;
@@ -39,8 +39,8 @@ public class Post {
     private String message;
     private Long parent;
     private long points;
-    private long thread;
-    private String user;
+    private Object thread;
+    private Object user;
 
     public Post(JsonObject object) {
         date = object.get(DATE_COLUMN).getAsString();
@@ -97,11 +97,11 @@ public class Post {
         this.dislikes = dislikes;
     }
 
-    public String getForum() {
+    public Object getForum() {
         return forum;
     }
 
-    public void setForum(String forum) {
+    public void setForum(Object forum) {
         this.forum = forum;
     }
 
@@ -185,19 +185,19 @@ public class Post {
         this.points = points;
     }
 
-    public long getThread() {
+    public Object getThread() {
         return thread;
     }
 
-    public void setThread(long thread) {
+    public void setThread(Object thread) {
         this.thread = thread;
     }
 
-    public String getUser() {
+    public Object getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(Object user) {
         this.user = user;
     }
 }
