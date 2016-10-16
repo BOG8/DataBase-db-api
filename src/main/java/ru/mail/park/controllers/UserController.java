@@ -35,4 +35,14 @@ public class UserController extends BaseController {
     public RestResponse details(@RequestParam(value = "user") String email) {
         return new RestResponse(userDAO.details(email));
     }
+
+    @RequestMapping(value = "/follow", method = RequestMethod.POST)
+    public RestResponse follow(@RequestBody String data) {
+        return new RestResponse(userDAO.follow(data));
+    }
+
+    @RequestMapping(value = "/unfollow", method = RequestMethod.POST)
+    public RestResponse unfollow(@RequestBody String data) {
+        return new RestResponse(userDAO.unfollow(data));
+    }
 }

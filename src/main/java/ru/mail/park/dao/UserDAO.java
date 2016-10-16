@@ -11,4 +11,7 @@ public interface UserDAO extends BaseDAO {
 
     Reply details(String email);
 
+    Reply follow(String jsonString);
+
+    Reply unfollow(String jsonString);
 }

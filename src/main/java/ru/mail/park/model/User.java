@@ -29,7 +29,7 @@ public class User {
     private String username;
     private String[] followers;
     private String[] following;
-    private Long[] subscriptions;
+    private Integer[] subscriptions;
 
     public User(String about, String email, long id, boolean isAnonymous, String name, String username) {
         this.about = about;
@@ -40,7 +40,7 @@ public class User {
         this.username = username;
         this.followers = new String[]{};
         this.following = new String[]{};
-        this.subscriptions = new Long[]{};
+        this.subscriptions = new Integer[]{};
     }
 
     public User(JsonObject object) {
@@ -60,24 +60,29 @@ public class User {
         name = resultSet.getString(NAME_COLUMN);
         username = resultSet.getString(USERNAME_COLUMN);
 
-        if (followers != null) {
-            this.followers = resultSet.getString(FOLLOWERS_COLUMN).split(COMMA);
+        final String tempFollowers = resultSet.getString(FOLLOWERS_COLUMN);
+        if (tempFollowers != null) {
+            this.followers = tempFollowers.split(COMMA);
         } else {
             this.followers = new String[]{};
         }
-        if (following != null) {
-            this.following = resultSet.getString(FOLLOWING_COLUMN).split(COMMA);
+
+        final String tempFollowing = resultSet.getString(FOLLOWING_COLUMN);
+        if (tempFollowing != null) {
+            this.following = tempFollowing.split(COMMA);
         } else {
             this.following = new String[]{};
         }
-        if (subscriptions != null) {
-            String[] subs = resultSet.getString(SUBSCRIPTIONS_COLUMN).split(COMMA);
-            this.subscriptions = new Long[subs.length];
-            for (int i=0; i < subs.length; i++) {
-                this.subscriptions[i] = Long.parseLong(subs[i]);
+
+        final String tempSubscriptions = resultSet.getString(SUBSCRIPTIONS_COLUMN);
+        if (tempSubscriptions != null) {
+            final String[] userSubs = tempSubscriptions.split(COMMA);
+            this.subscriptions = new Integer[userSubs.length];
+            for (int i = 0; i < userSubs.length; i++) {
+                this.subscriptions[i] = Integer.parseInt(userSubs[i]);
             }
         } else {
-            this.subscriptions = new Long[]{};
+            this.subscriptions = new Integer[]{};
         }
     }
 
@@ -145,11 +150,11 @@ public class User {
         this.following = following;
     }
 
-    public Long[] getSubscriptions() {
+    public Integer[] getSubscriptions() {
         return subscriptions;
     }
 
-    public void setSubscriptions(Long[] subscriptions) {
+    public void setSubscriptions(Integer[] subscriptions) {
         this.subscriptions = subscriptions;
     }
 }
