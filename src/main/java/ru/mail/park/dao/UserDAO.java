@@ -8,4 +8,7 @@ import ru.mail.park.response.Reply;
 
 public interface UserDAO extends BaseDAO {
     Reply create(String jsonString);
+
+    Reply details(String email);
+
 }

@@ -1,9 +1,6 @@
 package ru.mail.park.controllers;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.mail.park.dao.UserDAO;
 import ru.mail.park.dao.impl.UserDAOImpl;
 import ru.mail.park.response.RestResponse;
@@ -34,4 +31,8 @@ public class UserController extends BaseController {
         return new RestResponse(userDAO.create(body));
     }
 
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+    public RestResponse details(@RequestParam(value = "user") String email) {
+        return new RestResponse(userDAO.details(email));
+    }
 }

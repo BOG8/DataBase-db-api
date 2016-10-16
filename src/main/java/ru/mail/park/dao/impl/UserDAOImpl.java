@@ -49,4 +49,33 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
 
         return new Reply(Status.OK, user);
     }
+
+    @Override
+    public Reply details(String email) {
+        User user;
+        try (Connection connection = dataSource.getConnection()) {
+            String query = new StringBuilder()
+                    .append("SELECT U.*, group_concat(distinct JUF.follower) as following, ")
+                    .append("group_concat(distinct JUF1.user) as followers, ")
+                    .append("group_concat(distinct JUS.thread) as subscribes\n")
+                    .append("FROM User U \n")
+                    .append("LEFT JOIN Followers JUF ON U.email = JUF.user\n")
+                    .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.follower\n")
+                    .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
+                    .append("WHERE U.email = ?").toString();
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setString(1, email);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    resultSet.next();
+                    user = new User(resultSet);
+                } catch (Exception e) {
+                    return new Reply(Status.NOT_FOUND);
+                }
+            }
+        } catch (SQLException e) {
+            return new Reply(Status.INCORRECT_REQUEST);
+        }
+
+        return new Reply(Status.OK, user);
+    }
 }

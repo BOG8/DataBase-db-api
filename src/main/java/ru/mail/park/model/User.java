@@ -2,6 +2,8 @@ package ru.mail.park.model;
 
 import com.google.gson.JsonObject;
 
+import java.sql.ResultSet;
+
 /**
  * Created by zac on 09.10.16.
  */
@@ -14,6 +16,10 @@ public class User {
     public static final String ISANONYMOUS_COLUMN = "isAnonymous";
     public static final String NAME_COLUMN = "name";
     public static final String USERNAME_COLUMN = "username";
+    public static final String FOLLOWERS_COLUMN = "followers";
+    public static final String FOLLOWING_COLUMN = "following";
+    public static final String SUBSCRIPTIONS_COLUMN = "subscriptions";
+    public static final String COMMA = ",";
 
     private String about;
     private String email;
@@ -21,6 +27,9 @@ public class User {
     private boolean isAnonymous;
     private String name;
     private String username;
+    private String[] followers;
+    private String[] following;
+    private Long[] subscriptions;
 
     public User(String about, String email, long id, boolean isAnonymous, String name, String username) {
         this.about = about;
@@ -29,6 +38,9 @@ public class User {
         this.isAnonymous = isAnonymous;
         this.name = name;
         this.username = username;
+        this.followers = new String[]{};
+        this.following = new String[]{};
+        this.subscriptions = new Long[]{};
     }
 
     public User(JsonObject object) {
@@ -38,6 +50,35 @@ public class User {
         isAnonymous = object.has(ISANONYMOUS_COLUMN) && object.get(ISANONYMOUS_COLUMN).getAsBoolean();
         name = object.get(NAME_COLUMN).getAsString();
         username = object.get(USERNAME_COLUMN).getAsString();
+    }
+
+    public User(ResultSet resultSet) throws Exception {
+        about = resultSet.getString(ABOUT_COLUMN);
+        email = resultSet.getString(EMAIL_COLUMN);
+        id = resultSet.getLong(ID_COLUMN);
+        isAnonymous = resultSet.getBoolean(ISANONYMOUS_COLUMN);
+        name = resultSet.getString(NAME_COLUMN);
+        username = resultSet.getString(USERNAME_COLUMN);
+
+        if (followers != null) {
+            this.followers = resultSet.getString(FOLLOWERS_COLUMN).split(COMMA);
+        } else {
+            this.followers = new String[]{};
+        }
+        if (following != null) {
+            this.following = resultSet.getString(FOLLOWING_COLUMN).split(COMMA);
+        } else {
+            this.following = new String[]{};
+        }
+        if (subscriptions != null) {
+            String[] subs = resultSet.getString(SUBSCRIPTIONS_COLUMN).split(COMMA);
+            this.subscriptions = new Long[subs.length];
+            for (int i=0; i < subs.length; i++) {
+                this.subscriptions[i] = Long.parseLong(subs[i]);
+            }
+        } else {
+            this.subscriptions = new Long[]{};
+        }
     }
 
     public String getAbout() {
@@ -86,5 +127,29 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String[] getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(String[] followers) {
+        this.followers = followers;
+    }
+
+    public String[] getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(String[] following) {
+        this.following = following;
+    }
+
+    public Long[] getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(Long[] subscriptions) {
+        this.subscriptions = subscriptions;
     }
 }

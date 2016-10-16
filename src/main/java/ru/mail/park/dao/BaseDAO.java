@@ -5,5 +5,5 @@ package ru.mail.park.dao;
  */
 
 public interface BaseDAO {
-
+    void truncateTable();
 }

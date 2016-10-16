@@ -61,7 +61,7 @@ public class Post {
     }
 
     public Post(ResultSet resultSet) throws Exception {
-        date = resultSet.getString(DATE_COLUMN);
+        date = resultSet.getString(DATE_COLUMN).substring(0, 19);
         dislikes = resultSet.getLong(DISLIKES_COLUMN);
         forum = resultSet.getString(FORUM_COLUMN);
         id = resultSet.getLong(ID_COLUMN);
