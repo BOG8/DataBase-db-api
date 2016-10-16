@@ -1,5 +1,6 @@
 package ru.mail.park.dao.impl;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import ru.mail.park.dao.ThreadDAO;
 import ru.mail.park.model.Thread;
@@ -83,5 +84,48 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
         }
 
         return new Reply(Status.OK, thread);
+    }
+
+    @Override
+    public Reply close(String jsonString) {
+        try (Connection connection = dataSource.getConnection())  {
+            Integer thread = new JsonParser().parse(jsonString).getAsJsonObject().get("thread").getAsInt();
+            try {
+                String query = new StringBuilder("UPDATE ")
+                .append(tableName)
+                .append(" SET isClosed = 1 WHERE id = ?").toString();
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setInt(1, thread);
+                    ps.execute();
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
+    }
+
+    @Override
+    public Reply open(String data) {
+        try (Connection connection = dataSource.getConnection())  {
+            Integer thread = new JsonParser().parse(data).getAsJsonObject().get("thread").getAsInt();
+            try {
+                String query = new StringBuilder("UPDATE ")
+                        .append(tableName)
+                        .append("  SET isClosed = 0 WHERE id = ?").toString();
+                try (PreparedStatement stmt = connection.prepareStatement(query)) {
+                    stmt.setInt(1, thread);
+                    stmt.execute();
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+        return new Reply(Status.OK, new Gson().fromJson(data, Object.class));
     }
 }

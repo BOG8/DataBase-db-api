@@ -10,4 +10,8 @@ public interface ThreadDAO extends BaseDAO {
     Reply create(String jsonString);
 
     Reply details(long threadId, String[] related);
+
+    Reply close(String jsonString);
+
+    Reply open(String jsonString);
 }

@@ -36,4 +36,14 @@ public class ThreadController extends BaseController {
                                 @RequestParam(value = "related", required = false) String[] related) {
         return new RestResponse(threadDAO.details(threadId, related));
     }
+
+    @RequestMapping(value = "/close", method = RequestMethod.POST)
+    public RestResponse close(@RequestBody String body) {
+        return new RestResponse(threadDAO.close(body));
+    }
+
+    @RequestMapping(value = "/open", method = RequestMethod.POST)
+    public RestResponse open(@RequestBody String body) {
+        return new RestResponse(threadDAO.open(body));
+    }
 }
