@@ -66,4 +66,14 @@ public class ThreadController extends BaseController {
     public RestResponse vote(@RequestBody String body) {
         return new RestResponse(threadDAO.vote(body));
     }
+
+    @RequestMapping(value = "/subscribe", method = RequestMethod.POST)
+    public RestResponse subscribe(@RequestBody String body) {
+        return new RestResponse(threadDAO.subscribe(body));
+    }
+
+    @RequestMapping(value = "/unsubscribe", method = RequestMethod.POST)
+    public RestResponse unsubscribe(@RequestBody String body) {
+        return new RestResponse(threadDAO.unsubscribe(body));
+    }
 }

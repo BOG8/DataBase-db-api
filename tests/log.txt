@@ -6,113 +6,113 @@ info: Let there be users.
 
 info: Requesting http://localhost:5000/db/api/user/create/ with {'username': 'user1', 'about': 'hello im user1', 'isAnonymous': False, 'name': 'John', 'email': 'example@mail.ru'} (POST)
 
-info: Request time was: 0.0549 sec
+info: Request time was: 0.0331 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example@mail.ru'} (GET)
 
-info: Request time was: 0.0190 sec
+info: Request time was: 0.0065 sec
 
 info: Requesting http://localhost:5000/db/api/user/create/ with {'username': None, 'about': None, 'isAnonymous': True, 'name': None, 'email': 'richard.nixon@example.com'} (POST)
 
-info: Request time was: 0.0070 sec
+info: Request time was: 0.0060 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'richard.nixon@example.com'} (GET)
 
-info: Request time was: 0.0077 sec
+info: Request time was: 0.0062 sec
 
 error: Attribute <email> from API response (value=None) dont match test object (value='richard.nixon@example.com')
 
 info: Requesting http://localhost:5000/db/api/user/create/ with {'username': 'user2', 'about': 'hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2hello im user2', 'isAnonymous': False, 'name': 'Jey', 'email': 'example2@mail.ru'} (POST)
 
-info: Request time was: 0.0427 sec
+info: Request time was: 0.0366 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example2@mail.ru'} (GET)
 
-info: Request time was: 0.0061 sec
+info: Request time was: 0.0078 sec
 
 info: Requesting http://localhost:5000/db/api/user/create/ with {'username': 'user3', 'about': 'hello im user3', 'isAnonymous': False, 'name': 'Josh', 'email': 'example3@mail.ru'} (POST)
 
-info: Request time was: 0.0383 sec
+info: Request time was: 0.0582 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example3@mail.ru'} (GET)
 
-info: Request time was: 0.0071 sec
+info: Request time was: 0.0060 sec
 
 info: Requesting http://localhost:5000/db/api/user/create/ with {'username': 'user4', 'about': 'hello im user4', 'isAnonymous': False, 'name': 'Jim', 'email': 'example4@mail.ru'} (POST)
-
-info: Request time was: 0.0366 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example4@mail.ru'} (GET)
-
-info: Request time was: 0.0080 sec
-
-info: Let there be content
-
-info: Requesting http://localhost:5000/db/api/forum/create/ with {'name': 'Forum With Sufficiently Large Name', 'short_name': 'forumwithsufficientlylargename', 'user': 'example3@mail.ru'} (POST)
-
-info: Request time was: 0.0369 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/forum/details/ with {'related': ['user'], 'forum': 'forumwithsufficientlylargename'} (GET)
-
-info: Request time was: 0.0157 sec
-
-info: Requesting http://localhost:5000/db/api/forum/create/ with {'name': 'Forum I', 'short_name': 'forum1', 'user': 'richard.nixon@example.com'} (POST)
-
-info: Request time was: 0.0386 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/forum/details/ with {'related': ['user'], 'forum': 'forum1'} (GET)
-
-info: Request time was: 0.0077 sec
-
-error: Attribute <user> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/forum/create/ with {'name': 'Forum II', 'short_name': 'forum2', 'user': 'example@mail.ru'} (POST)
-
-info: Request time was: 0.0366 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/forum/details/ with {'related': ['user'], 'forum': 'forum2'} (GET)
-
-info: Request time was: 0.0081 sec
-
-info: Requesting http://localhost:5000/db/api/forum/create/ with {'name': u'\u0424\u043e\u0440\u0443\u043c \u0422\u0440\u0438', 'short_name': 'forum3', 'user': 'example3@mail.ru'} (POST)
-
-info: Request time was: 0.0356 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/forum/details/ with {'related': ['user'], 'forum': 'forum3'} (GET)
-
-info: Request time was: 0.0062 sec
-
-info: Requesting http://localhost:5000/db/api/thread/create/ with {'forum': 'forum2', 'title': 'Thread With Sufficiently Large Title', 'isClosed': True, 'user': 'richard.nixon@example.com', 'date': '2014-01-01 00:00:01', 'message': 'hey hey hey hey!', 'slug': 'Threadwithsufficientlylargetitle', 'isDeleted': False} (POST)
 
 info: Request time was: 0.0379 sec
 
 info: Validating by requesting object details
 
+info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example4@mail.ru'} (GET)
+
+info: Request time was: 0.0063 sec
+
+info: Let there be content
+
+info: Requesting http://localhost:5000/db/api/forum/create/ with {'name': 'Forum With Sufficiently Large Name', 'short_name': 'forumwithsufficientlylargename', 'user': 'richard.nixon@example.com'} (POST)
+
+info: Request time was: 0.0380 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/forum/details/ with {'related': ['user'], 'forum': 'forumwithsufficientlylargename'} (GET)
+
+info: Request time was: 0.0059 sec
+
+error: Attribute <user> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/forum/create/ with {'name': 'Forum I', 'short_name': 'forum1', 'user': 'example3@mail.ru'} (POST)
+
+info: Request time was: 0.0380 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/forum/details/ with {'related': ['user'], 'forum': 'forum1'} (GET)
+
+info: Request time was: 0.0075 sec
+
+info: Requesting http://localhost:5000/db/api/forum/create/ with {'name': 'Forum II', 'short_name': 'forum2', 'user': 'example3@mail.ru'} (POST)
+
+info: Request time was: 0.0373 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/forum/details/ with {'related': ['user'], 'forum': 'forum2'} (GET)
+
+info: Request time was: 0.0067 sec
+
+info: Requesting http://localhost:5000/db/api/forum/create/ with {'name': u'\u0424\u043e\u0440\u0443\u043c \u0422\u0440\u0438', 'short_name': 'forum3', 'user': 'example4@mail.ru'} (POST)
+
+info: Request time was: 0.0365 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/forum/details/ with {'related': ['user'], 'forum': 'forum3'} (GET)
+
+info: Request time was: 0.0066 sec
+
+info: Requesting http://localhost:5000/db/api/thread/create/ with {'forum': 'forum2', 'title': 'Thread With Sufficiently Large Title', 'isClosed': True, 'user': 'richard.nixon@example.com', 'date': '2014-01-01 00:00:01', 'message': 'hey hey hey hey!', 'slug': 'Threadwithsufficientlylargetitle', 'isDeleted': False} (POST)
+
+info: Request time was: 0.0374 sec
+
+info: Validating by requesting object details
+
 info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['forum', 'user'], 'thread': -1} (GET)
 
-info: Request time was: 0.0055 sec
+info: Request time was: 0.0056 sec
 
 error: Attribute <forum> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'richard.nixon@example.com', 'date': '2014-10-02 14:26:24', 'message': 'my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0', 'isSpam': False, 'isHighlighted': False, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'richard.nixon@example.com', 'date': '2016-10-13 00:35:33', 'message': 'my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
 
 info: Request time was: 0.0047 sec
 
@@ -120,61 +120,37 @@ info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
-info: Request time was: 0.0068 sec
-
-error: Attribute <isHighlighted> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2015-03-04 01:30:39', 'message': 'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
-
 info: Request time was: 0.0062 sec
 
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0064 sec
-
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2015-05-20 02:31:56', 'message': 'my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example3@mail.ru', 'date': '2016-10-17 02:50:25', 'message': 'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
 
-info: Request time was: 0.0050 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0063 sec
-
-error: Attribute <isHighlighted> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example3@mail.ru', 'date': '2016-06-09 15:07:23', 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.0073 sec
+info: Request time was: 0.0493 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
-info: Request time was: 0.0066 sec
-
-error: Attribute <isHighlighted> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example2@mail.ru', 'date': '2016-08-09 09:46:17', 'message': 'my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4', 'isSpam': True, 'isHighlighted': False, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
-
-info: Request time was: 0.0553 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0074 sec
+info: Request time was: 0.0061 sec
 
 error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example3@mail.ru', 'date': '2016-09-13 23:33:36', 'message': 'my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5', 'isSpam': True, 'isHighlighted': False, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example2@mail.ru', 'date': '2016-10-17 17:18:02', 'message': 'my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
 
-info: Request time was: 0.0045 sec
+info: Request time was: 0.0489 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0060 sec
+
+error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example4@mail.ru', 'date': '2016-10-17 17:25:40', 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0054 sec
 
 info: Validating by requesting object details
 
@@ -184,69 +160,45 @@ info: Request time was: 0.0057 sec
 
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example3@mail.ru', 'date': '2016-10-11 15:41:48', 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2016-10-17 17:31:47', 'message': 'my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
 
-info: Request time was: 0.0374 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0052 sec
-
-error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
-
-info: Requesting http://localhost:5000/db/api/thread/create/ with {'forum': 'forum1', 'title': 'Thread I', 'isClosed': False, 'user': 'richard.nixon@example.com', 'date': '2013-12-31 00:01:01', 'message': 'hey!', 'slug': 'thread1', 'isDeleted': False} (POST)
-
-info: Request time was: 0.0389 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['forum', 'user'], 'thread': -1} (GET)
-
-info: Request time was: 0.0051 sec
-
-error: Attribute <forum> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example@mail.ru', 'date': '2014-04-08 09:29:50', 'message': 'my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0', 'isSpam': False, 'isHighlighted': False, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
-
-info: Request time was: 0.0389 sec
+info: Request time was: 0.0059 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
-info: Request time was: 0.0050 sec
-
-error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'richard.nixon@example.com', 'date': '2015-02-21 13:07:46', 'message': 'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum1', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.0045 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0061 sec
+info: Request time was: 0.0054 sec
 
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example3@mail.ru', 'date': '2016-10-01 23:43:55', 'message': 'my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2', 'isSpam': True, 'isHighlighted': False, 'forum': 'forum1', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2016-10-17 17:31:50', 'message': 'my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
 
-info: Request time was: 0.0511 sec
+info: Request time was: 0.0478 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
-info: Request time was: 0.0065 sec
+info: Request time was: 0.0068 sec
 
 error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example3@mail.ru', 'date': '2016-10-10 13:54:48', 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', 'isSpam': False, 'isHighlighted': False, 'forum': 'forum1', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2016-10-17 17:31:53', 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
 
-info: Request time was: 0.0065 sec
+info: Request time was: 0.0496 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0070 sec
+
+error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example2@mail.ru', 'date': '2016-10-17 17:31:54', 'message': 'my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0064 sec
 
 info: Validating by requesting object details
 
@@ -256,147 +208,33 @@ info: Request time was: 0.0069 sec
 
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'richard.nixon@example.com', 'date': '2016-10-12 15:05:51', 'message': 'my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum1', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2016-10-17 17:31:54', 'message': 'my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
 
-info: Request time was: 0.0051 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0053 sec
-
-error: Attribute <isHighlighted> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example2@mail.ru', 'date': '2016-10-16 07:59:56', 'message': 'my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum1', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
-
-info: Request time was: 0.0057 sec
+info: Request time was: 0.0455 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
-info: Request time was: 0.0060 sec
-
-error: Attribute <isHighlighted> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example@mail.ru', 'date': '2016-10-16 20:46:48', 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum1', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
-
-info: Request time was: 0.0449 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0064 sec
+info: Request time was: 0.0076 sec
 
 error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
 
-info: Requesting http://localhost:5000/db/api/thread/create/ with {'forum': 'forum2', 'title': 'Thread II', 'isClosed': False, 'user': 'example2@mail.ru', 'date': '2013-12-30 00:01:01', 'message': 'hey hey!', 'slug': 'thread2', 'isDeleted': False} (POST)
+info: Requesting http://localhost:5000/db/api/thread/create/ with {'forum': 'forumwithsufficientlylargename', 'title': 'Thread I', 'isClosed': False, 'user': 'example3@mail.ru', 'date': '2013-12-31 00:01:01', 'message': 'hey!', 'slug': 'thread1', 'isDeleted': False} (POST)
 
-info: Request time was: 0.0488 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['forum', 'user'], 'thread': 3} (GET)
-
-info: Request time was: 0.0080 sec
-
-error: Attribute <date> from API response (value=u'2013-12-30 00:01:01.0') dont match test object (value='2013-12-30 00:01:01')
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2015-03-14 17:20:36', 'message': 'my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0', 'isSpam': False, 'isHighlighted': False, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.0068 sec
+info: Request time was: 0.0479 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['forum', 'user'], 'thread': -1} (GET)
 
 info: Request time was: 0.0071 sec
 
-error: Attribute <isHighlighted> missing in response from API: None
+error: Attribute <forum> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2015-08-31 03:07:15', 'message': 'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example2@mail.ru', 'date': '2016-08-03 19:42:49', 'message': 'my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0', 'isSpam': True, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
 
-info: Request time was: 0.0058 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0071 sec
-
-error: Attribute <isHighlighted> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example3@mail.ru', 'date': '2016-01-18 11:37:18', 'message': 'my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': True} (POST)
-
-info: Request time was: 0.0967 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': 6, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0133 sec
-
-error: Attribute <posts> from API response (value=0) dont match test object (value=3)
-
-error: Related <thread> from API response [3] dont match test object [3]
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': 6, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2016-06-18 14:05:18', 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', 'isSpam': True, 'isHighlighted': False, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.1969 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': 7, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0100 sec
-
-error: Attribute <posts> from API response (value=0) dont match test object (value=4)
-
-error: Related <thread> from API response [3] dont match test object [3]
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example4@mail.ru', 'date': '2016-07-08 08:49:09', 'message': 'my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4', 'isSpam': False, 'isHighlighted': False, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.0892 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': 8, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0091 sec
-
-error: Attribute <posts> from API response (value=0) dont match test object (value=5)
-
-error: Related <thread> from API response [3] dont match test object [3]
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': 7, 'isApproved': True, 'user': 'richard.nixon@example.com', 'date': '2016-07-15 18:01:11', 'message': 'my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5', 'isSpam': False, 'isHighlighted': False, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': True} (POST)
-
-info: Request time was: 0.0456 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0072 sec
-
-error: Attribute <parent> from API response (value=None) dont match test object (value=7)
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example@mail.ru', 'date': '2016-08-30 04:07:07', 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.0064 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0099 sec
-
-error: Attribute <isHighlighted> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2016-09-03 12:44:53', 'message': 'my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7my message 7', 'isSpam': True, 'isHighlighted': False, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.0053 sec
+info: Request time was: 0.0066 sec
 
 info: Validating by requesting object details
 
@@ -406,45 +244,225 @@ info: Request time was: 0.0067 sec
 
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2016-10-09 21:30:04', 'message': 'my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8my message 8', 'isSpam': False, 'isHighlighted': False, 'forum': 'forum2', 'thread': 3, 'isDeleted': False, 'isEdited': True} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example3@mail.ru', 'date': '2016-08-14 17:16:23', 'message': 'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', 'isSpam': False, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
 
-info: Request time was: 0.0046 sec
+info: Request time was: 0.0058 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
-info: Request time was: 0.0054 sec
+info: Request time was: 0.0065 sec
 
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/thread/create/ with {'forum': 'forumwithsufficientlylargename', 'title': u'\u0422\u0440\u0435\u0434 \u0422\u0440\u0438', 'isClosed': False, 'user': 'example2@mail.ru', 'date': '2013-12-29 00:01:01', 'message': 'hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! ', 'slug': 'thread3', 'isDeleted': False} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example2@mail.ru', 'date': '2016-09-17 14:54:18', 'message': 'my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2', 'isSpam': True, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
 
-info: Request time was: 0.0424 sec
+info: Request time was: 0.0057 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['forum', 'user'], 'thread': 4} (GET)
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
-info: Request time was: 0.0093 sec
+info: Request time was: 0.0086 sec
 
-error: Attribute <date> from API response (value=u'2013-12-29 00:01:01.0') dont match test object (value='2013-12-29 00:01:01')
+error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example3@mail.ru', 'date': '2016-01-28 09:45:34', 'message': 'my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0', 'isSpam': True, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': 4, 'isDeleted': False, 'isEdited': False} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example4@mail.ru', 'date': '2016-10-15 10:53:42', 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', 'isSpam': False, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
 
 info: Request time was: 0.0066 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0068 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2016-10-17 15:58:06', 'message': 'my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4', 'isSpam': False, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0067 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0066 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2016-10-17 16:54:30', 'message': 'my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5', 'isSpam': True, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
+
+info: Request time was: 0.0060 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0063 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2016-10-17 17:03:17', 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6', 'isSpam': True, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0442 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0075 sec
+
+error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
+
+info: Requesting http://localhost:5000/db/api/thread/create/ with {'forum': 'forum1', 'title': 'Thread II', 'isClosed': False, 'user': 'example@mail.ru', 'date': '2013-12-30 00:01:01', 'message': 'hey hey!', 'slug': 'thread2', 'isDeleted': False} (POST)
+
+info: Request time was: 0.0374 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['forum', 'user'], 'thread': 3} (GET)
+
+info: Request time was: 0.0104 sec
+
+error: Attribute <date> from API response (value=u'2013-12-30 00:01:01.0') dont match test object (value='2013-12-30 00:01:01')
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example4@mail.ru', 'date': '2016-10-08 23:21:56', 'message': 'my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum1', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0066 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0066 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example4@mail.ru', 'date': '2016-10-12 12:09:34', 'message': 'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum1', 'thread': 3, 'isDeleted': False, 'isEdited': True} (POST)
 
 info: Request time was: 0.0074 sec
 
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0072 sec
+
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example3@mail.ru', 'date': '2016-07-26 12:24:53', 'message': 'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', 'isSpam': False, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': 4, 'isDeleted': False, 'isEdited': False} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'richard.nixon@example.com', 'date': '2016-10-17 01:43:18', 'message': 'my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2', 'isSpam': False, 'isHighlighted': False, 'forum': 'forum1', 'thread': 3, 'isDeleted': False, 'isEdited': True} (POST)
+
+info: Request time was: 0.0065 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0073 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'richard.nixon@example.com', 'date': '2016-10-17 06:25:52', 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum1', 'thread': 3, 'isDeleted': False, 'isEdited': True} (POST)
+
+info: Request time was: 0.0063 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0086 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example3@mail.ru', 'date': '2016-10-17 13:32:58', 'message': 'my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum1', 'thread': 3, 'isDeleted': False, 'isEdited': True} (POST)
+
+info: Request time was: 0.0067 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0068 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example2@mail.ru', 'date': '2016-10-17 16:50:02', 'message': 'my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5', 'isSpam': False, 'isHighlighted': True, 'forum': 'forum1', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0060 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0068 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': False, 'user': 'richard.nixon@example.com', 'date': '2016-10-17 16:56:01', 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6', 'isSpam': True, 'isHighlighted': True, 'forum': 'forum1', 'thread': 3, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0699 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0076 sec
+
+error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
+
+info: Requesting http://localhost:5000/db/api/thread/create/ with {'forum': 'forumwithsufficientlylargename', 'title': u'\u0422\u0440\u0435\u0434 \u0422\u0440\u0438', 'isClosed': False, 'user': 'example3@mail.ru', 'date': '2013-12-29 00:01:01', 'message': 'hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! ', 'slug': 'thread3', 'isDeleted': False} (POST)
+
+info: Request time was: 0.0461 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['forum', 'user'], 'thread': -1} (GET)
+
+info: Request time was: 0.0065 sec
+
+error: Attribute <forum> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example4@mail.ru', 'date': '2014-08-25 10:23:43', 'message': 'my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0my message 0', 'isSpam': True, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0061 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0065 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2015-01-22 15:15:57', 'message': 'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', 'isSpam': False, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0357 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0065 sec
+
+error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example3@mail.ru', 'date': '2015-03-19 12:59:47', 'message': 'my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2', 'isSpam': True, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0379 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
 info: Request time was: 0.0066 sec
+
+error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'richard.nixon@example.com', 'date': '2015-04-11 18:27:23', 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', 'isSpam': False, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
+
+info: Request time was: 0.0062 sec
 
 info: Validating by requesting object details
 
@@ -454,21 +472,33 @@ info: Request time was: 0.0070 sec
 
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example@mail.ru', 'date': '2016-09-08 22:22:01', 'message': 'my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2my message 2', 'isSpam': False, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': 4, 'isDeleted': False, 'isEdited': False} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example2@mail.ru', 'date': '2015-04-14 18:18:41', 'message': 'my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4', 'isSpam': True, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
 
-info: Request time was: 0.0074 sec
+info: Request time was: 0.0058 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
 
-info: Request time was: 0.0073 sec
+info: Request time was: 0.0059 sec
 
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'example2@mail.ru', 'date': '2016-09-22 11:54:17', 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', 'isSpam': False, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': 4, 'isDeleted': False, 'isEdited': True} (POST)
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2016-05-15 09:11:05', 'message': 'my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5', 'isSpam': False, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': True} (POST)
 
-info: Request time was: 0.0068 sec
+info: Request time was: 0.0334 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
+
+info: Request time was: 0.0063 sec
+
+error: Attribute <parent> from API response (value=None) dont match test object (value=-1)
+
+info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': True, 'user': 'richard.nixon@example.com', 'date': '2016-07-26 19:57:58', 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6', 'isSpam': True, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': -1, 'isDeleted': False, 'isEdited': False} (POST)
+
+info: Request time was: 0.0055 sec
 
 info: Validating by requesting object details
 
@@ -478,57 +508,21 @@ info: Request time was: 0.0069 sec
 
 error: Attribute <isHighlighted> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': -1, 'isApproved': True, 'user': 'example@mail.ru', 'date': '2016-10-10 15:17:08', 'message': 'my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4my message 4', 'isSpam': False, 'isHighlighted': True, 'forum': 'forumwithsufficientlylargename', 'thread': 4, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.1088 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': 10, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0099 sec
-
-error: Attribute <posts> from API response (value=0) dont match test object (value=5)
-
-error: Related <thread> from API response [4] dont match test object [4]
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': None, 'isApproved': False, 'user': 'example4@mail.ru', 'date': '2016-10-13 07:47:30', 'message': 'my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5my message 5', 'isSpam': False, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': 4, 'isDeleted': False, 'isEdited': True} (POST)
-
-info: Request time was: 0.0053 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0054 sec
-
-error: Attribute <isHighlighted> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/post/create/ with {'parent': 10, 'isApproved': True, 'user': 'richard.nixon@example.com', 'date': '2016-10-14 01:12:41', 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6', 'isSpam': True, 'isHighlighted': False, 'forum': 'forumwithsufficientlylargename', 'thread': 4, 'isDeleted': False, 'isEdited': False} (POST)
-
-info: Request time was: 0.0670 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1, 'related': ['thread', 'forum', 'user']} (GET)
-
-info: Request time was: 0.0065 sec
-
-error: Attribute <parent> from API response (value=None) dont match test object (value=10)
-
 info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -42} (GET)
 
-info: Request time was: 0.0080 sec
+info: Request time was: 0.0063 sec
 
-info: Requesting http://localhost:5000/db/api/user/create/ with {'username': 'user3', 'about': 'hello im user3', 'isAnonymous': False, 'name': 'Josh', 'email': 'example3@mail.ru'} (POST)
+info: Requesting http://localhost:5000/db/api/user/create/ with {'username': None, 'about': None, 'isAnonymous': True, 'name': None, 'email': 'richard.nixon@example.com'} (POST)
+
+info: Request time was: 0.0060 sec
+
+error: Create existing user response code was 2 instead 5
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['user', 'thread'], 'thread': -1} (GET)
 
 info: Request time was: 0.0073 sec
 
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'related': ['user', 'thread'], 'thread': 3} (GET)
-
-info: Request time was: 0.0142 sec
-
-error: Incorrect request response code was None instead 3
+error: Incorrect request response code was 4 instead 3
 
 info: List posts
 
@@ -538,7 +532,7 @@ error: Request error: Request http://localhost:5000/db/api/post/list/?since=2014
 
 info: Validating by requesting list of objects
 
-error: len(api objects list) != len(test object list): 0 != 2
+error: len(api objects list) != len(test object list): 0 != 1
 
 info: Requesting http://localhost:5000/db/api/post/list/ with {'since': '2014-01-01 00:00:00', 'order': 'desc', 'forum': 'forum1'} (GET)
 
@@ -552,79 +546,85 @@ error: Request error: Request http://localhost:5000/db/api/post/list/?since=2014
 
 info: Validating by requesting list of objects
 
-error: len(api objects list) != len(test object list): 0 != 3
+info: Requesting http://localhost:5000/db/api/post/list/ with {'since': '2014-01-03 00:00:00', 'limit': 3, 'order': 'desc', 'thread': -1} (GET)
 
-info: Requesting http://localhost:5000/db/api/post/list/ with {'since': '2014-01-03 00:00:00', 'limit': 3, 'order': 'desc', 'thread': 4} (GET)
-
-error: Request error: Request http://localhost:5000/db/api/post/list/?since=2014-01-03+00%3A00%3A00&limit=3&order=desc&thread=4 return code not 2xx: 404
+error: Request error: Request http://localhost:5000/db/api/post/list/?since=2014-01-03+00%3A00%3A00&limit=3&order=desc&thread=-1 return code not 2xx: 404
 
 info: Validating by requesting list of objects
 
-error: len(api objects list) != len(test object list): 0 != 2
+error: len(api objects list) != len(test object list): 0 != 1
 
 info: Remove post
 
-info: Requesting http://localhost:5000/db/api/post/remove/ with {'post': 7} (POST)
+info: Requesting http://localhost:5000/db/api/post/remove/ with {'post': -1} (POST)
 
-info: Request time was: 0.0326 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': 7} (GET)
-
-info: Request time was: 0.0074 sec
+info: Request time was: 0.0067 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': 3} (GET)
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1} (GET)
 
-info: Request time was: 0.0072 sec
+info: Request time was: 0.0068 sec
 
-error: Attribute <posts> from API response (value=0) dont match test object (value=8)
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
+
+info: Request time was: 0.0067 sec
+
+error: Attribute <forum> missing in response from API: None
 
 info: Restore post
 
-info: Requesting http://localhost:5000/db/api/post/restore/ with {'post': 7} (POST)
+info: Requesting http://localhost:5000/db/api/post/restore/ with {'post': -1} (POST)
 
-info: Request time was: 0.0400 sec
+info: Request time was: 0.0067 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': 7} (GET)
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1} (GET)
+
+info: Request time was: 0.0067 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
+
+info: Request time was: 0.0065 sec
+
+error: Attribute <forum> missing in response from API: None
+
+info: Update post
+
+info: Requesting http://localhost:5000/db/api/post/update/ with {'post': -1, 'message': 'my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6my message 6'} (POST)
 
 info: Request time was: 0.0074 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': 3} (GET)
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1} (GET)
 
-info: Request time was: 0.0073 sec
+info: Request time was: 0.0066 sec
 
-error: Attribute <posts> from API response (value=0) dont match test object (value=9)
-
-info: Update post
-
-info: Requesting http://localhost:5000/db/api/post/update/ with {'post': 7, 'message': 'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3'} (POST)
-
-info: Request time was: 0.0440 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': 7} (GET)
-
-info: Request time was: 0.0087 sec
+error: Attribute <isHighlighted> missing in response from API: None
 
 info: Likes time!!!
 
-info: Requesting http://localhost:5000/db/api/post/vote/ with {'vote': 1, 'post': 8} (POST)
+info: Requesting http://localhost:5000/db/api/post/vote/ with {'vote': 1, 'post': -1} (POST)
 
-info: Request time was: 0.0436 sec
+info: Request time was: 0.0072 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/post/details/ with {'post': 8} (GET)
+info: Requesting http://localhost:5000/db/api/post/details/ with {'post': -1} (GET)
 
-info: Request time was: 0.0068 sec
+info: Request time was: 0.0066 sec
+
+error: Attribute <isHighlighted> missing in response from API: None
 
 info: List some threads
 
@@ -654,37 +654,83 @@ info: Validating by requesting list of objects
 
 info: And list posts in them
 
-info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'since': '2014-01-02 00:00:00', 'limit': 2, 'order': 'asc', 'thread': -1} (GET)
+info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'since': '2014-01-02 00:00:00', 'limit': 2, 'order': 'asc', 'thread': 3} (GET)
 
-error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?since=2014-01-02+00%3A00%3A00&limit=2&order=asc&thread=-1 return code not 2xx: 404
-
-info: Validating by requesting list of objects
-
-info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'sort': 'tree', 'since': '2014-01-01 00:00:00', 'limit': 3, 'order': 'desc', 'thread': 4} (GET)
-
-error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?sort=tree&since=2014-01-01+00%3A00%3A00&limit=3&order=desc&thread=4 return code not 2xx: 404
+error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?since=2014-01-02+00%3A00%3A00&limit=2&order=asc&thread=3 return code not 2xx: 404
 
 info: Validating by requesting list of objects
 
-info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'sort': 'parent_tree', 'since': '2014-01-01 00:00:00', 'limit': 2, 'order': 'asc', 'thread': -1} (GET)
+info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'sort': 'tree', 'since': '2014-01-01 00:00:00', 'limit': 3, 'order': 'desc', 'thread': -1} (GET)
 
-error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?sort=parent_tree&since=2014-01-01+00%3A00%3A00&limit=2&order=asc&thread=-1 return code not 2xx: 404
-
-info: Validating by requesting list of objects
-
-info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'since': '2014-01-03 00:00:00', 'limit': 3, 'order': 'desc', 'thread': 3} (GET)
-
-error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?since=2014-01-03+00%3A00%3A00&limit=3&order=desc&thread=3 return code not 2xx: 404
+error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?sort=tree&since=2014-01-01+00%3A00%3A00&limit=3&order=desc&thread=-1 return code not 2xx: 404
 
 info: Validating by requesting list of objects
 
-error: len(api objects list) != len(test object list): 0 != 3
+error: len(api objects list) != len(test object list): 0 != 1
+
+info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'sort': 'parent_tree', 'since': '2014-01-01 00:00:00', 'limit': 2, 'order': 'asc', 'thread': 3} (GET)
+
+error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?sort=parent_tree&since=2014-01-01+00%3A00%3A00&limit=2&order=asc&thread=3 return code not 2xx: 404
+
+info: Validating by requesting list of objects
+
+info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'since': '2014-01-03 00:00:00', 'limit': 3, 'order': 'desc', 'thread': -1} (GET)
+
+error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?since=2014-01-03+00%3A00%3A00&limit=3&order=desc&thread=-1 return code not 2xx: 404
+
+info: Validating by requesting list of objects
+
+error: len(api objects list) != len(test object list): 0 != 1
 
 info: Go away thread!
 
 info: Requesting http://localhost:5000/db/api/thread/remove/ with {'thread': -1} (POST)
 
-info: Request time was: 0.0076 sec
+info: Request time was: 0.0069 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
+
+info: Request time was: 0.0064 sec
+
+error: Attribute <forum> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'order': 'desc', 'thread': -1} (GET)
+
+error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?order=desc&thread=-1 return code not 2xx: 404
+
+info: Validating by requesting list of objects
+
+error: len(api objects list) != len(test object list): 0 != 1
+
+info: Alright, I forgive you, come back
+
+info: Requesting http://localhost:5000/db/api/thread/restore/ with {'thread': -1} (POST)
+
+info: Request time was: 0.0068 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
+
+info: Request time was: 0.0062 sec
+
+error: Attribute <forum> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'order': 'desc', 'thread': -1} (GET)
+
+error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?order=desc&thread=-1 return code not 2xx: 404
+
+info: Validating by requesting list of objects
+
+error: len(api objects list) != len(test object list): 0 != 1
+
+info: Changed my mind again, goodbye!
+
+info: Requesting http://localhost:5000/db/api/thread/close/ with {'thread': -1} (POST)
+
+info: Request time was: 0.0066 sec
 
 info: Validating by requesting object details
 
@@ -694,65 +740,25 @@ info: Request time was: 0.0070 sec
 
 error: Attribute <forum> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'order': 'desc', 'thread': -1} (GET)
-
-error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?order=desc&thread=-1 return code not 2xx: 404
-
-info: Validating by requesting list of objects
-
-info: Alright, I forgive you, come back
-
-info: Requesting http://localhost:5000/db/api/thread/restore/ with {'thread': -1} (POST)
-
-info: Request time was: 0.0078 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
-
-info: Request time was: 0.0075 sec
-
-error: Attribute <forum> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/thread/listPosts/ with {'order': 'desc', 'thread': -1} (GET)
-
-error: Request error: Request http://localhost:5000/db/api/thread/listPosts/?order=desc&thread=-1 return code not 2xx: 404
-
-info: Validating by requesting list of objects
-
-info: Changed my mind again, goodbye!
-
-info: Requesting http://localhost:5000/db/api/thread/close/ with {'thread': -1} (POST)
-
-info: Request time was: 0.0074 sec
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
-
-info: Request time was: 0.0077 sec
-
-error: Attribute <forum> missing in response from API: None
-
 info: But I cant live without you
 
 info: Requesting http://localhost:5000/db/api/thread/open/ with {'thread': -1} (POST)
 
-info: Request time was: 0.0073 sec
+info: Request time was: 0.0067 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
 
-info: Request time was: 0.0067 sec
+info: Request time was: 0.0073 sec
 
 error: Attribute <forum> missing in response from API: None
 
 info: Update post
 
-info: Requesting http://localhost:5000/db/api/thread/update/ with {'message': 'hey!', 'slug': 'newslug', 'thread': -1} (POST)
+info: Requesting http://localhost:5000/db/api/thread/update/ with {'message': 'hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! ', 'slug': 'newslug', 'thread': -1} (POST)
 
-info: Request time was: 0.0068 sec
+info: Request time was: 0.0108 sec
 
 info: Validating by requesting object details
 
@@ -764,93 +770,93 @@ error: Attribute <forum> missing in response from API: None
 
 info: Likes time...again!
 
-info: Requesting http://localhost:5000/db/api/thread/vote/ with {'vote': 1, 'thread': 4} (POST)
+info: Requesting http://localhost:5000/db/api/thread/vote/ with {'vote': 1, 'thread': -1} (POST)
 
-info: Request time was: 0.0563 sec
+info: Request time was: 0.0071 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': 4} (GET)
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
 
-info: Request time was: 0.0083 sec
+info: Request time was: 0.0068 sec
 
-error: Attribute <posts> from API response (value=0) dont match test object (value=7)
+error: Attribute <forum> missing in response from API: None
 
 info: Subscribe me
 
-info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example@mail.ru', 'thread': 3} (POST)
+info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example@mail.ru', 'thread': -1} (POST)
 
-error: Request error: Request http://localhost:5000/db/api/thread/subscribe/ return code not 2xx: 404
+info: Request time was: 0.0333 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
+
+info: Request time was: 0.0067 sec
+
+error: Attribute <forum> missing in response from API: None
+
+info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example2@mail.ru', 'thread': 3} (POST)
+
+info: Request time was: 0.0377 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': 3} (GET)
 
-info: Request time was: 0.0070 sec
+info: Request time was: 0.0080 sec
 
-error: Attribute <posts> from API response (value=0) dont match test object (value=9)
+error: Attribute <posts> from API response (value=0) dont match test object (value=7)
 
-info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example3@mail.ru', 'thread': -1} (POST)
+info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example3@mail.ru', 'thread': 3} (POST)
 
-error: Request error: Request http://localhost:5000/db/api/thread/subscribe/ return code not 2xx: 404
+info: Request time was: 0.0690 sec
+
+info: Validating by requesting object details
+
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': 3} (GET)
+
+info: Request time was: 0.0051 sec
+
+error: Attribute <posts> from API response (value=0) dont match test object (value=7)
+
+info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example4@mail.ru', 'thread': -1} (POST)
+
+info: Request time was: 0.0392 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
 
-info: Request time was: 0.0073 sec
+info: Request time was: 0.0059 sec
 
 error: Attribute <forum> missing in response from API: None
 
-info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example3@mail.ru', 'thread': -1} (POST)
+info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example@mail.ru', 'thread': 3} (POST)
 
-error: Request error: Request http://localhost:5000/db/api/thread/subscribe/ return code not 2xx: 404
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
-
-info: Request time was: 0.0067 sec
-
-error: Attribute <forum> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example@mail.ru', 'thread': -1} (POST)
-
-error: Request error: Request http://localhost:5000/db/api/thread/subscribe/ return code not 2xx: 404
+info: Request time was: 0.0378 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': 3} (GET)
 
-info: Request time was: 0.0067 sec
-
-error: Attribute <forum> missing in response from API: None
-
-info: Requesting http://localhost:5000/db/api/thread/subscribe/ with {'user': 'example3@mail.ru', 'thread': 4} (POST)
-
-error: Request error: Request http://localhost:5000/db/api/thread/subscribe/ return code not 2xx: 404
-
-info: Validating by requesting object details
-
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': 4} (GET)
-
-info: Request time was: 0.0093 sec
+info: Request time was: 0.0061 sec
 
 error: Attribute <posts> from API response (value=0) dont match test object (value=7)
 
 info: Unsubscribe me
 
-info: Requesting http://localhost:5000/db/api/thread/unsubscribe/ with {'user': 'example3@mail.ru', 'thread': -1} (POST)
+info: Requesting http://localhost:5000/db/api/thread/unsubscribe/ with {'user': 'richard.nixon@example.com', 'thread': 3} (POST)
 
-error: Request error: Request http://localhost:5000/db/api/thread/unsubscribe/ return code not 2xx: 404
+info: Request time was: 0.0067 sec
 
 info: Validating by requesting object details
 
-info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': -1} (GET)
+info: Requesting http://localhost:5000/db/api/thread/details/ with {'thread': 3} (GET)
 
-info: Request time was: 0.0074 sec
+info: Request time was: 0.0068 sec
 
-error: Attribute <forum> missing in response from API: None
+error: Attribute <posts> from API response (value=0) dont match test object (value=7)
 
 info: OMG, I was soooooo wasted...what did I wrote yesterday?
 
@@ -859,8 +865,6 @@ info: Requesting http://localhost:5000/db/api/user/listPosts/ with {'since': '20
 error: Request error: Request http://localhost:5000/db/api/user/listPosts/?since=2014-01-02+00%3A00%3A00&limit=2&user=example%40mail.ru&order=asc return code not 2xx: 404
 
 info: Validating by requesting list of objects
-
-error: len(api objects list) != len(test object list): 0 != 1
 
 info: Requesting http://localhost:5000/db/api/user/listPosts/ with {'since': '2014-01-01 00:00:00', 'user': 'richard.nixon@example.com', 'order': 'desc'} (GET)
 
@@ -882,73 +886,65 @@ error: Request error: Request http://localhost:5000/db/api/user/listPosts/?since
 
 info: Validating by requesting list of objects
 
-error: len(api objects list) != len(test object list): 0 != 1
-
 info: It was huge mistake. Need to change a nick quickly
 
 info: Requesting http://localhost:5000/db/api/user/updateProfile/ with {'about': 'Wowowowow', 'user': 'example2@mail.ru', 'name': 'NewName'} (POST)
 
-info: Request time was: 0.0802 sec
+info: Request time was: 0.0411 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example2@mail.ru'} (GET)
 
-info: Request time was: 0.0088 sec
+info: Request time was: 0.0073 sec
 
 info: Requesting http://localhost:5000/db/api/user/updateProfile/ with {'about': 'Wowowowow!!!', 'user': 'example3@mail.ru', 'name': 'NewName2'} (POST)
 
-info: Request time was: 0.0571 sec
+info: Request time was: 0.0368 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example3@mail.ru'} (GET)
 
-info: Request time was: 0.0072 sec
-
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([4]))
+info: Request time was: 0.0090 sec
 
 info: Follow someone
 
 info: Requesting http://localhost:5000/db/api/user/follow/ with {'follower': 'example3@mail.ru', 'followee': 'example@mail.ru'} (POST)
 
-info: Request time was: 0.0456 sec
+info: Request time was: 0.0351 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example3@mail.ru'} (GET)
 
-info: Request time was: 0.0079 sec
-
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([4]))
+info: Request time was: 0.0086 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example@mail.ru'} (GET)
 
-info: Request time was: 0.0088 sec
+info: Request time was: 0.0094 sec
 
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([3, -1]))
+error: Attribute <subscriptions> from API response (value=set([3])) dont match test object (value=set([3, -1]))
 
 info: Requesting http://localhost:5000/db/api/user/follow/ with {'follower': 'example@mail.ru', 'followee': 'example3@mail.ru'} (POST)
 
-info: Request time was: 0.0824 sec
+info: Request time was: 0.0368 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example@mail.ru'} (GET)
 
-info: Request time was: 0.0082 sec
+info: Request time was: 0.0073 sec
 
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([3, -1]))
+error: Attribute <subscriptions> from API response (value=set([3])) dont match test object (value=set([3, -1]))
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example3@mail.ru'} (GET)
 
-info: Request time was: 0.0081 sec
-
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([4]))
+info: Request time was: 0.0071 sec
 
 info: List followers
 
@@ -990,15 +986,13 @@ info: Unfollow someone
 
 info: Requesting http://localhost:5000/db/api/user/unfollow/ with {'follower': 'example3@mail.ru', 'followee': 'example@mail.ru'} (POST)
 
-info: Request time was: 0.0707 sec
+info: Request time was: 0.0330 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example3@mail.ru'} (GET)
 
-info: Request time was: 0.0093 sec
-
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([4]))
+info: Request time was: 0.0087 sec
 
 info: Validating by requesting object details
 
@@ -1006,27 +1000,25 @@ info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'examp
 
 info: Request time was: 0.0078 sec
 
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([3, -1]))
+error: Attribute <subscriptions> from API response (value=set([3])) dont match test object (value=set([3, -1]))
 
 info: Requesting http://localhost:5000/db/api/user/unfollow/ with {'follower': 'example@mail.ru', 'followee': 'example3@mail.ru'} (POST)
 
-info: Request time was: 0.0339 sec
+info: Request time was: 0.0387 sec
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example@mail.ru'} (GET)
 
-info: Request time was: 0.0112 sec
+info: Request time was: 0.0077 sec
 
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([3, -1]))
+error: Attribute <subscriptions> from API response (value=set([3])) dont match test object (value=set([3, -1]))
 
 info: Validating by requesting object details
 
 info: Requesting http://localhost:5000/db/api/user/details/ with {'user': 'example3@mail.ru'} (GET)
 
-info: Request time was: 0.0074 sec
-
-error: Attribute <subscriptions> from API response (value=set([])) dont match test object (value=set([4]))
+info: Request time was: 0.0067 sec
 
 info: List forum posts
 
@@ -1036,7 +1028,7 @@ error: Request error: Request http://localhost:5000/db/api/forum/listPosts/?rela
 
 info: Validating by requesting list of objects
 
-error: len(api objects list) != len(test object list): 0 != 2
+error: len(api objects list) != len(test object list): 0 != 1
 
 info: List forum threads
 
@@ -1070,8 +1062,8 @@ info: Validating by requesting list of objects
  'post/list': False,
  'post/remove': False,
  'post/restore': False,
- 'post/update': True,
- 'post/vote': True,
+ 'post/update': False,
+ 'post/vote': False,
  'thread/close': False,
  'thread/create': False,
  'thread/list': False,
@@ -1089,5 +1081,5 @@ info: Validating by requesting list of objects
  'user/listFollowing': False,
  'user/listPosts': False,
  'user/unfollow': False,
- 'user/updateProfile': False}
-3/30 tests passed
+ 'user/updateProfile': True}
+2/30 tests passed

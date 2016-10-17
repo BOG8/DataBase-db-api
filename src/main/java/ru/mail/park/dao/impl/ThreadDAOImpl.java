@@ -237,7 +237,55 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
+
         return details(threadId, null);
+    }
+
+    @Override
+    public Reply subscribe(String jsonString) {
+        try (Connection connection = dataSource.getConnection())  {
+            JsonObject object = new JsonParser().parse(jsonString).getAsJsonObject();
+            String user = object.get("user").getAsString();
+            Integer thread = object.get("thread").getAsInt();
+            try {
+                String query = "INSERT INTO Subscriptions (user, thread) VALUES (?,?)";
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setString(1, user);
+                    ps.setInt(2, thread);
+                    ps.execute();
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
+    }
+
+    @Override
+    public Reply unsubscribe(String jsonString) {
+        try (Connection connection = dataSource.getConnection())  {
+            JsonObject object = new JsonParser().parse(jsonString).getAsJsonObject();
+
+            String user = object.get("user").getAsString();
+            Integer thread = object.get("thread").getAsInt();
+
+            try {
+                String query = "DELETE FROM Subscriptions WHERE user = ? AND thread = ?;";
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setString(1, user);
+                    ps.setInt(2, thread);
+                    ps.execute();
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+        return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
     }
 }
 

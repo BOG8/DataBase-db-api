@@ -22,4 +22,8 @@ public interface ThreadDAO extends BaseDAO {
     Reply update(String jsonString);
 
     Reply vote(String jsonString);
+
+    Reply subscribe(String jsonString);
+
+    Reply unsubscribe(String jsonString);
 }
