@@ -109,16 +109,16 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
     }
 
     @Override
-    public Reply open(String data) {
+    public Reply open(String jsonString) {
         try (Connection connection = dataSource.getConnection())  {
-            Integer thread = new JsonParser().parse(data).getAsJsonObject().get("thread").getAsInt();
+            Integer thread = new JsonParser().parse(jsonString).getAsJsonObject().get("thread").getAsInt();
             try {
                 String query = new StringBuilder("UPDATE ")
                         .append(tableName)
                         .append("  SET isClosed = 0 WHERE id = ?").toString();
-                try (PreparedStatement stmt = connection.prepareStatement(query)) {
-                    stmt.setInt(1, thread);
-                    stmt.execute();
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setInt(1, thread);
+                    ps.execute();
                 }
             } catch (SQLException e) {
                 return handeSQLException(e);
@@ -126,6 +126,62 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
-        return new Reply(Status.OK, new Gson().fromJson(data, Object.class));
+
+        return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
+    }
+
+    @Override
+    public Reply remove(String jsonString) {
+        try (Connection connection = dataSource.getConnection())  {
+            Integer thread = new JsonParser().parse(jsonString).getAsJsonObject().get("thread").getAsInt();
+            try {
+                String query = new StringBuilder("UPDATE ")
+                        .append(tableName)
+                        .append("  SET isDeleted = 1 WHERE id = ?").toString();
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setInt(1, thread);
+                    ps.execute();
+                }
+                query = "UPDATE Post SET isDeleted = 1 WHERE thread = ?";
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setInt(1, thread);
+                    ps.execute();
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
+    }
+
+    @Override
+    public Reply restore(String jsonString) {
+        try (Connection connection = dataSource.getConnection())  {
+            Integer thread = new JsonParser().parse(jsonString).getAsJsonObject().get("thread").getAsInt();
+            try {
+                String query = "UPDATE Post SET isDeleted = 0 WHERE thread = ?";
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setInt(1, thread);
+                    ps.executeUpdate();
+                }
+                query = new StringBuilder("UPDATE ")
+                        .append(tableName)
+                        .append("  SET isDeleted = 0  WHERE id = ?").toString();
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setInt(1, thread);
+                    ps.execute();
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
     }
 }
+

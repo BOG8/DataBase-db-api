@@ -46,4 +46,14 @@ public class ThreadController extends BaseController {
     public RestResponse open(@RequestBody String body) {
         return new RestResponse(threadDAO.open(body));
     }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public RestResponse remove(@RequestBody String body) {
+        return new RestResponse(threadDAO.remove(body));
+    }
+
+    @RequestMapping(value = "/restore", method = RequestMethod.POST)
+    public RestResponse restore(@RequestBody String body) {
+        return new RestResponse(threadDAO.restore(body));
+    }
 }
