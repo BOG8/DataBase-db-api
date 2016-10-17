@@ -1,6 +1,7 @@
 package ru.mail.park.dao.impl;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ru.mail.park.dao.ThreadDAO;
 import ru.mail.park.model.Thread;
@@ -182,6 +183,61 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
         }
 
         return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
+    }
+
+    @Override
+    public Reply update(String jsonString) {
+        long threadId;
+        try (Connection connection = dataSource.getConnection())  {
+            JsonObject object = new JsonParser().parse(jsonString).getAsJsonObject();
+            threadId = object.get("thread").getAsInt();
+            String message = object.get("message").getAsString();
+            String slug = object.get("slug").getAsString();
+            String query = new StringBuilder("UPDATE ")
+                    .append(tableName)
+                    .append(" SET message = ?, slug = ? WHERE id = ?").toString();
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setString(1, message);
+                ps.setString(2, slug);
+                ps.setLong(3, threadId);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return details(threadId, null);
+    }
+
+    @Override
+    public Reply vote(String jsonString) {
+        long threadId;
+        try (Connection connection = dataSource.getConnection())  {
+            JsonObject object = new JsonParser().parse(jsonString).getAsJsonObject();
+            Integer vote = object.get("vote").getAsInt();
+            threadId = object.get("thread").getAsInt();
+            String column = vote == -1 ? "dislikes" : "likes";
+            String query = new StringBuilder("UPDATE ")
+                    .append(tableName)
+                    .append(" SET ")
+                    .append(column)
+                    .append(" = ")
+                    .append(column)
+                    .append(" + 1, points = points + ")
+                    .append(Integer.toString(vote))
+                    .append(" WHERE id = ?").toString();
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setLong(1, threadId);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                return new Reply(Status.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+        return details(threadId, null);
     }
 }
 

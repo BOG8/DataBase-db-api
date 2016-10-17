@@ -18,4 +18,8 @@ public interface ThreadDAO extends BaseDAO {
     Reply remove(String jsonString);
 
     Reply restore(String jsonString);
+
+    Reply update(String jsonString);
+
+    Reply vote(String jsonString);
 }

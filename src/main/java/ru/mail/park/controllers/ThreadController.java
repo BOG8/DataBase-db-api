@@ -56,4 +56,14 @@ public class ThreadController extends BaseController {
     public RestResponse restore(@RequestBody String body) {
         return new RestResponse(threadDAO.restore(body));
     }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public RestResponse update(@RequestBody String body) {
+        return new RestResponse(threadDAO.update(body));
+    }
+
+    @RequestMapping(value = "/vote", method = RequestMethod.POST)
+    public RestResponse vote(@RequestBody String body) {
+        return new RestResponse(threadDAO.vote(body));
+    }
 }
