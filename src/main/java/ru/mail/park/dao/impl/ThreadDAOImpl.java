@@ -10,6 +10,7 @@ import ru.mail.park.response.Status;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -273,7 +274,7 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
             Integer thread = object.get("thread").getAsInt();
 
             try {
-                String query = "DELETE FROM Subscriptions WHERE user = ? AND thread = ?;";
+                String query = "DELETE FROM Subscriptions WHERE user = ? AND thread = ?";
                 try (PreparedStatement ps = connection.prepareStatement(query)) {
                     ps.setString(1, user);
                     ps.setInt(2, thread);
@@ -287,5 +288,57 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
         }
         return new Reply(Status.OK, new Gson().fromJson(jsonString, Object.class));
     }
+
+    @Override
+    public Reply listForum(String forum, String since, Long limit, String order) {
+        return new ForumDAOImpl(dataSource).listThreads(forum, since, limit, order, null);
+    }
+
+    @Override
+    public Reply listUser(String user, String since, Long limit, String order) {
+        ArrayList<Thread> threads = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection())  {
+            StringBuilder query = new StringBuilder("SELECT * FROM Thread WHERE user = ?");
+
+            if (since != null) {
+                query.append("AND date >= '");
+                query.append(since);
+                query.append("' ");
+            }
+
+            query.append("ORDER BY date ");
+            if (order != null) {
+                if (order.equals("asc")) {
+                    query.append("ASC ");
+                } else {
+                    query.append("DESC ");
+                }
+            } else {
+                query.append("DESC ");
+            }
+
+            if (limit != null) {
+                query.append("LIMIT ");
+                query.append(limit);
+            }
+
+            try(PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                ps.setString(1, user);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        Thread thread = new Thread(resultSet);
+                        threads.add(thread);
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, threads);
+    }
+
 }
 

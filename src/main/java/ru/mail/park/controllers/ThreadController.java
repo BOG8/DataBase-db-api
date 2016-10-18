@@ -76,4 +76,20 @@ public class ThreadController extends BaseController {
     public RestResponse unsubscribe(@RequestBody String body) {
         return new RestResponse(threadDAO.unsubscribe(body));
     }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET, params = {"forum"})
+    public RestResponse listForum(@RequestParam(value = "forum", required = true) String forum,
+                                  @RequestParam(value = "since", required = false) String since,
+                                  @RequestParam(value = "limit", required = false) Long limit,
+                                  @RequestParam(value = "order", required = false) String order) {
+        return new RestResponse(threadDAO.listForum(forum, since, limit, order));
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET, params = {"user"})
+    public RestResponse listUser(@RequestParam(value = "user", required = true) String user,
+                                        @RequestParam(value = "since", required = false) String since,
+                                        @RequestParam(value = "limit", required = false) Long limit,
+                                        @RequestParam(value = "order", required = false) String order) {
+        return new RestResponse(threadDAO.listUser(user, since, limit, order));
+    }
 }

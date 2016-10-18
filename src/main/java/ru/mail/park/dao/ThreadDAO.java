@@ -26,4 +26,8 @@ public interface ThreadDAO extends BaseDAO {
     Reply subscribe(String jsonString);
 
     Reply unsubscribe(String jsonString);
+
+    Reply listForum(String forum, String since, Long limit, String order);
+
+    Reply listUser(String user, String since, Long limit, String order);
 }

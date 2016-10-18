@@ -171,6 +171,7 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
                 query.append("LIMIT ");
                 query.append(limit);
             }
+
             try(PreparedStatement ps = connection.prepareStatement(query.toString())) {
                 ps.setString(1, forum);
                 try (ResultSet resultSet = ps.executeQuery()) {
