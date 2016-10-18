@@ -50,4 +50,29 @@ public class UserController extends BaseController {
     public RestResponse updateProfile(@RequestBody String body) {
         return new RestResponse(userDAO.updateProfile(body));
     }
+
+    @RequestMapping(value = "/listFollowers", method = RequestMethod.GET)
+    public RestResponse listFollowers(@RequestParam(value = "user", required = true) String email,
+                                      @RequestParam(value = "limit", required = false) Long limit,
+                                      @RequestParam(value = "order", required = false) String order,
+                                      @RequestParam(value = "since_id", required = false) Long sinceId) {
+        return new RestResponse(userDAO.listFollowers(email, limit, order, sinceId));
+    }
+
+
+    @RequestMapping(value = "/listFollowing", method = RequestMethod.GET)
+    public RestResponse listFollowing(@RequestParam(value = "user", required = true) String email,
+                                      @RequestParam(value = "limit", required = false) Long limit,
+                                      @RequestParam(value = "order", required = false) String order,
+                                      @RequestParam(value = "since_id", required = false) Long sinceId) {
+        return new RestResponse(userDAO.listFollowing(email, limit, order, sinceId));
+    }
+
+    @RequestMapping(value = "/listPosts", method = RequestMethod.GET)
+    public RestResponse listPosts(@RequestParam(value = "user", required = true) String email,
+                                  @RequestParam(value = "limit", required = false) Long limit,
+                                  @RequestParam(value = "order", required = false) String order,
+                                  @RequestParam(value = "since", required = false) String since){
+        return new RestResponse(userDAO.listPosts(email, limit, order, since));
+    }
 }

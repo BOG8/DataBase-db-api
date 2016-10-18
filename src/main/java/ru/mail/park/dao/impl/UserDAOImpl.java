@@ -3,12 +3,14 @@ package ru.mail.park.dao.impl;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ru.mail.park.dao.UserDAO;
+import ru.mail.park.model.Post;
 import ru.mail.park.model.User;
 import ru.mail.park.response.Reply;
 import ru.mail.park.response.Status;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by zac on 13.10.16.
@@ -56,10 +58,10 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
         User user;
         try (Connection connection = dataSource.getConnection()) {
             String query = new StringBuilder("SELECT U.*, ")
-                    .append("group_concat(distinct JUF1.follower) as followers, ")
-                    .append("group_concat(distinct JUF2.user) as following, ")
-                    .append("group_concat(distinct JUS.thread) as subscriptions\n")
-                    .append("FROM User U \n")
+                    .append("group_concat(distinct JUF1.follower) AS followers, ")
+                    .append("group_concat(distinct JUF2.user) AS following, ")
+                    .append("group_concat(distinct JUS.thread) AS subscriptions\n")
+                    .append("FROM User U\n")
                     .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.user\n")
                     .append("LEFT JOIN Followers JUF2 ON U.email = JUF2.follower\n")
                     .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
@@ -150,5 +152,157 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
         }
 
         return details(email);
+    }
+
+    @Override
+    public Reply listFollowers(String email, Long limit, String order, Long sinceId) {
+        ArrayList<User> followers = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection()) {
+            StringBuilder query = new StringBuilder("SELECT U.*, ")
+                    .append("group_concat(distinct JUF1.follower) AS followers, ")
+                    .append("group_concat(distinct JUF2.user) AS following, ")
+                    .append("group_concat(distinct JUS.thread) AS subscriptions\n")
+                    .append("FROM Followers UF\n")
+                    .append("JOIN User U ON U.email = UF.follower\n")
+                    .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.user\n")
+                    .append("LEFT JOIN Followers JUF2 ON U.email = JUF2.follower\n")
+                    .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
+                    .append("WHERE UF.user = ? ");
+
+            if (sinceId != null) {
+                query.append("AND U.id >= ");
+                query.append(sinceId);
+                query.append(" ");
+            }
+
+            query.append("ORDER BY U.name ");
+            if (order != null) {
+                if (order.equals("asc")) {
+                    query.append("ASC ");
+                } else {
+                    query.append("DESC ");
+                }
+            } else {
+                query.append("DESC ");
+            }
+
+            if (limit != null) {
+                query.append("LIMIT ");
+                query.append(limit);
+            }
+
+            try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                ps.setString(1, email);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        followers.add(new User(resultSet));
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, followers);
+    }
+
+    @Override
+    public Reply listFollowing(String email, Long limit, String order, Long sinceId) {
+        ArrayList<User> followers = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection()) {
+            StringBuilder query = new StringBuilder("SELECT U.*, ")
+                    .append("group_concat(distinct JUF1.follower) AS followers, ")
+                    .append("group_concat(distinct JUF2.user) AS following, ")
+                    .append("group_concat(distinct JUS.thread) AS subscriptions\n")
+                    .append("FROM Followers UF\n")
+                    .append("JOIN User U ON U.email = UF.user\n")
+                    .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.user\n")
+                    .append("LEFT JOIN Followers JUF2 ON U.email = JUF2.follower\n")
+                    .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
+                    .append("where UF.follower = ? ");
+
+            if (sinceId != null) {
+                query.append("AND U.id >= ");
+                query.append(sinceId);
+                query.append(" ");
+            }
+
+            query.append("ORDER BY U.name ");
+            if (order != null) {
+                if (order.equals("asc")) {
+                    query.append("ASC ");
+                } else {
+                    query.append("DESC ");
+                }
+            } else {
+                query.append("DESC ");
+            }
+
+            if (limit != null) {
+                query.append("LIMIT ");
+                query.append(limit);
+            }
+
+            try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                ps.setString(1, email);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        followers.add(new User(resultSet));
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, followers);
+    }
+
+    @Override
+    public Reply listPosts(String email, Long limit, String order, String since) {
+        ArrayList<Post> posts = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection()) {
+            StringBuilder query = new StringBuilder("SELECT * FROM Post WHERE user = ? ");
+            if (since != null) {
+                query.append("AND date >= '");
+                query.append(since);
+                query.append("' ");
+            }
+
+            query.append("ORDER BY date ");
+            if (order != null) {
+                if (order.equals("asc")) {
+                    query.append("ASC ");
+                } else {
+                    query.append("DESC ");
+                }
+            } else {
+                query.append("DESC ");
+            }
+
+            if (limit != null) {
+                query.append("LIMIT ");
+                query.append(limit);
+            }
+
+            try(PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                ps.setString(1, email);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        posts.add(new Post(resultSet));
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, posts);
     }
 }

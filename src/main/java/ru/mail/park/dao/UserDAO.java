@@ -16,4 +16,10 @@ public interface UserDAO extends BaseDAO {
     Reply unfollow(String jsonString);
 
     Reply updateProfile(String jsonString);
+
+    Reply listFollowers(String email, Long limit, String order, Long sinceId);
+
+    Reply listFollowing(String email, Long limit, String order, Long sinceId);
+
+    Reply listPosts(String email, Long limit, String order, String since);
 }
