@@ -3,12 +3,16 @@ package ru.mail.park.dao.impl;
 import com.google.gson.JsonParser;
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import ru.mail.park.dao.ForumDAO;
+import ru.mail.park.model.Post;
+import ru.mail.park.model.Thread;
+import ru.mail.park.model.User;
 import ru.mail.park.response.Reply;
 import ru.mail.park.response.Status;
 import ru.mail.park.model.Forum;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -69,7 +73,8 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
             }
             if (related != null) {
                 if (Arrays.asList(related).contains("user")) {
-                    forum.setUser(new UserDAOImpl(dataSource).details(forum.getUser().toString()).getObject());
+                    String email = forum.getUser().toString();
+                    forum.setUser(new UserDAOImpl(dataSource).details(email).getObject());
                 }
             }
         } catch (Exception e) {
@@ -77,5 +82,125 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
         }
 
         return new Reply(Status.OK, forum);
+    }
+
+    @Override
+    public Reply listPosts(String forum, String since, Long limit, String order, String[] related) {
+        ArrayList<Post> posts = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection()) {
+            StringBuilder query = new StringBuilder("SELECT * FROM Post WHERE forum = ? ");
+
+            if (since != null) {
+                query.append("AND date >= '");
+                query.append(since);
+                query.append("' ");
+            }
+
+            query.append("ORDER BY date ");
+            if (order != null) {
+                if (order.equals("asc")) {
+                    query.append("ASC ");
+                } else {
+                    query.append("DESC ");
+                }
+            } else {
+                query.append("DESC ");
+            }
+
+            if (limit != null) {
+                query.append("LIMIT ");
+                query.append(limit);
+            }
+
+            try(PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                ps.setString(1, forum);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        Post post = new Post(resultSet);
+                        if (related != null) {
+                            if (Arrays.asList(related).contains("forum")) {
+                                String shortName = post.getForum().toString();
+                                post.setForum(new ForumDAOImpl(dataSource).details(shortName, null).getObject());
+                            }
+                            if (Arrays.asList(related).contains("thread")) {
+                                long threadId = Long.parseLong(post.getThread().toString());
+                                post.setThread(new ThreadDAOImpl(dataSource).details(threadId, null).getObject());
+                            }
+                            if (Arrays.asList(related).contains("user")) {
+                                String email = post.getUser().toString();
+                                post.setUser(new UserDAOImpl(dataSource).details(email).getObject());
+                            }
+                        }
+                        posts.add(post);
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, posts);
+    }
+
+    @Override
+    public Reply listThreads(String forum, String since, Long limit, String order, String[] related) {
+        ArrayList<Thread> threads = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection()) {
+            StringBuilder query = new StringBuilder("SELECT * FROM Thread WHERE forum = ? ");
+
+            if (since != null) {
+                query.append("AND date >= '");
+                query.append(since);
+                query.append("' ");
+            }
+
+            query.append("ORDER BY date ");
+            if (order != null) {
+                if (order.equals("asc")) {
+                    query.append("ASC ");
+                } else {
+                    query.append("DESC ");
+                }
+            } else {
+                query.append("DESC ");
+            }
+
+            if (limit != null) {
+                query.append("LIMIT ");
+                query.append(limit);
+            }
+            try(PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                ps.setString(1, forum);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        Thread thread = new Thread(resultSet);
+                        if (related != null) {
+                            if (Arrays.asList(related).contains("forum")) {
+                                String shortName = thread.getForum().toString();
+                                thread.setForum(new ForumDAOImpl(dataSource).details(shortName, null).getObject());
+                            }
+                            if (Arrays.asList(related).contains("user")) {
+                                String email = thread.getUser().toString();
+                                thread.setUser(new UserDAOImpl(dataSource).details(email).getObject());
+                            }
+                        }
+                        threads.add(thread);
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, threads);
+    }
+
+    @Override
+    public Reply listUsers(String forum, Long sinceId, Long limit, String order) {
+        return null;
     }
 }
