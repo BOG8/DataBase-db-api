@@ -54,7 +54,7 @@ public class Post {
         isSpam = object.has(ISSPAM_COLUMN) && object.get(ISSPAM_COLUMN).getAsBoolean();
         likes = 0;
         message = object.get(MESSAGE_COLUMN).getAsString();
-        parent = object.has(PARENT_COLUMN) ? object.get(PARENT_COLUMN).getAsLong() : -1;
+        parent = object.has(PARENT_COLUMN) ? object.get(PARENT_COLUMN).getAsLong() : null;
         points = 0;
         thread = object.get(THREAD_COLUMN).getAsLong();
         user = object.get(USER_COLUMN).getAsString();

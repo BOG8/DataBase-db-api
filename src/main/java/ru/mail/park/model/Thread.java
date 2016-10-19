@@ -39,7 +39,7 @@ public class Thread {
     private Object user;
 
     public Thread(JsonObject object) {
-        date = object.get(DATE_COLUMN).getAsString();
+        date = object.get(DATE_COLUMN).getAsString().substring(0, 19);
         dislikes = 0;
         forum = object.get(FORUM_COLUMN).getAsString();
         id = object.has(ID_COLUMN) ? object.get(ID_COLUMN).getAsInt() : 0;

@@ -30,4 +30,6 @@ public interface ThreadDAO extends BaseDAO {
     Reply listForum(String forum, String since, Long limit, String order);
 
     Reply listUser(String user, String since, Long limit, String order);
+
+    Reply listPosts(Long threadId, String since, Long limit, String sort, String order);
 }

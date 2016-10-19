@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ru.mail.park.dao.ThreadDAO;
+import ru.mail.park.model.Post;
 import ru.mail.park.model.Thread;
 import ru.mail.park.response.Reply;
 import ru.mail.park.response.Status;
@@ -12,6 +13,7 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Created by zac on 15.10.16.
@@ -338,6 +340,53 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
         }
 
         return new Reply(Status.OK, threads);
+    }
+
+    // Работает только flat сортировка!!! (true в if-else конструкции)
+    @Override
+    public Reply listPosts(Long threadId, String since, Long limit, String sort, String order) {
+        ArrayList<Post> posts = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection())  {
+            StringBuilder query = new StringBuilder("SELECT * FROM Post WHERE thread = ? ");
+            if (sort == null || sort.equals("flat") || true) {
+                if (since != null) {
+                    query.append("AND date >= '");
+                    query.append(since);
+                    query.append("' ");
+                }
+
+                query.append("ORDER BY date ");
+                if (order != null) {
+                    if (order.equals("asc")) {
+                        query.append("ASC ");
+                    } else {
+                        query.append("DESC ");
+                    }
+                } else {
+                    query.append("DESC ");
+                }
+
+                if (limit != null) {
+                    query.append("LIMIT ");
+                    query.append(limit);
+                }
+            }
+
+            try(PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                ps.setLong(1, threadId);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        posts.add(new Post(resultSet));
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, posts);
     }
 
 }

@@ -92,4 +92,14 @@ public class ThreadController extends BaseController {
                                         @RequestParam(value = "order", required = false) String order) {
         return new RestResponse(threadDAO.listUser(user, since, limit, order));
     }
+
+
+    @RequestMapping(value = "/listPosts", method = RequestMethod.GET)
+    public RestResponse listPosts(@RequestParam(value = "thread", required = true) Long threadId,
+                                  @RequestParam(value = "since", required = false) String since,
+                                  @RequestParam(value = "limit", required = false) Long limit,
+                                  @RequestParam(value = "sort", required = false) String sort,
+                                  @RequestParam(value = "order", required = false) String order) {
+        return new RestResponse(threadDAO.listPosts(threadId, since, limit, sort, order));
+    }
 }

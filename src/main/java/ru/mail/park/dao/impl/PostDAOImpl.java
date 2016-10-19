@@ -194,4 +194,14 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
 
         return details(postId, null);
     }
+
+    @Override
+    public Reply listForum(String forum, String since, Long limit, String order) {
+        return new ForumDAOImpl(dataSource).listPosts(forum, since, limit, order, null);
+    }
+
+    @Override
+    public Reply listThread(Long threadId, String since, Long limit, String order) {
+        return new ThreadDAOImpl(dataSource).listPosts(threadId, since, limit, null, order);
+    }
 }

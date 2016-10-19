@@ -18,4 +18,8 @@ public interface PostDAO extends BaseDAO {
     Reply update(String jsonString);
 
     Reply vote(String jsonString);
+
+    Reply listForum(String forum, String since, Long limit, String order);
+
+    Reply listThread(Long threadId, String since, Long limit, String order);
 }
