@@ -26,6 +26,8 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
 
     @Override
     public Reply create(String jsonString) {
+        System.out.println("Создаём юзера");
+        System.out.println(jsonString);
         final User user;
         try (Connection connection = dataSource.getConnection()){
             user = new User(new JsonParser().parse(jsonString).getAsJsonObject());
@@ -49,7 +51,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
-
+        System.out.println("Создали юзера\n\n");
         return new Reply(Status.OK, user);
     }
 

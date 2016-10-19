@@ -44,12 +44,25 @@ public class User {
     }
 
     public User(JsonObject object) {
-        about = object.get(ABOUT_COLUMN).getAsString();
+//        about = object.get(ABOUT_COLUMN).getAsString();
+        try {
+            about = object.get(ABOUT_COLUMN).getAsString();
+        } catch (Exception e) {
+            about = null;
+        }
         email = object.get(EMAIL_COLUMN).getAsString();
         id = object.has(ID_COLUMN) ? object.get(ID_COLUMN).getAsInt() : 0;
         isAnonymous = object.has(ISANONYMOUS_COLUMN) && object.get(ISANONYMOUS_COLUMN).getAsBoolean();
-        name = object.get(NAME_COLUMN).getAsString();
-        username = object.get(USERNAME_COLUMN).getAsString();
+        try {
+            name = object.get(NAME_COLUMN).getAsString();
+        } catch (Exception e) {
+            name = null;
+        }
+        try {
+            username = object.get(USERNAME_COLUMN).getAsString();
+        } catch (Exception e) {
+            username = null;
+        }
     }
 
     public User(ResultSet resultSet) throws Exception {

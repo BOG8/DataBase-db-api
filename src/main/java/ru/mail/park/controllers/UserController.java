@@ -36,43 +36,43 @@ public class UserController extends BaseController {
         return new RestResponse(userDAO.details(email));
     }
 
-    @RequestMapping(value = "/follow", method = RequestMethod.POST)
-    public RestResponse follow(@RequestBody String body) {
-        return new RestResponse(userDAO.follow(body));
-    }
-
-    @RequestMapping(value = "/unfollow", method = RequestMethod.POST)
-    public RestResponse unfollow(@RequestBody String body) {
-        return new RestResponse(userDAO.unfollow(body));
-    }
-
-    @RequestMapping(value = "/updateProfile", method = RequestMethod.POST)
-    public RestResponse updateProfile(@RequestBody String body) {
-        return new RestResponse(userDAO.updateProfile(body));
-    }
-
-    @RequestMapping(value = "/listFollowers", method = RequestMethod.GET)
-    public RestResponse listFollowers(@RequestParam(value = "user", required = true) String email,
-                                      @RequestParam(value = "limit", required = false) Long limit,
-                                      @RequestParam(value = "order", required = false) String order,
-                                      @RequestParam(value = "since_id", required = false) Long sinceId) {
-        return new RestResponse(userDAO.listFollowers(email, limit, order, sinceId));
-    }
-
-
-    @RequestMapping(value = "/listFollowing", method = RequestMethod.GET)
-    public RestResponse listFollowing(@RequestParam(value = "user", required = true) String email,
-                                      @RequestParam(value = "limit", required = false) Long limit,
-                                      @RequestParam(value = "order", required = false) String order,
-                                      @RequestParam(value = "since_id", required = false) Long sinceId) {
-        return new RestResponse(userDAO.listFollowing(email, limit, order, sinceId));
-    }
-
-    @RequestMapping(value = "/listPosts", method = RequestMethod.GET)
-    public RestResponse listPosts(@RequestParam(value = "user", required = true) String email,
-                                  @RequestParam(value = "limit", required = false) Long limit,
-                                  @RequestParam(value = "order", required = false) String order,
-                                  @RequestParam(value = "since", required = false) String since){
-        return new RestResponse(userDAO.listPosts(email, limit, order, since));
-    }
+//    @RequestMapping(value = "/follow", method = RequestMethod.POST)
+//    public RestResponse follow(@RequestBody String body) {
+//        return new RestResponse(userDAO.follow(body));
+//    }
+//
+//    @RequestMapping(value = "/unfollow", method = RequestMethod.POST)
+//    public RestResponse unfollow(@RequestBody String body) {
+//        return new RestResponse(userDAO.unfollow(body));
+//    }
+//
+//    @RequestMapping(value = "/updateProfile", method = RequestMethod.POST)
+//    public RestResponse updateProfile(@RequestBody String body) {
+//        return new RestResponse(userDAO.updateProfile(body));
+//    }
+//
+//    @RequestMapping(value = "/listFollowers", method = RequestMethod.GET)
+//    public RestResponse listFollowers(@RequestParam(value = "user", required = true) String email,
+//                                      @RequestParam(value = "limit", required = false) Long limit,
+//                                      @RequestParam(value = "order", required = false) String order,
+//                                      @RequestParam(value = "since_id", required = false) Long sinceId) {
+//        return new RestResponse(userDAO.listFollowers(email, limit, order, sinceId));
+//    }
+//
+//
+//    @RequestMapping(value = "/listFollowing", method = RequestMethod.GET)
+//    public RestResponse listFollowing(@RequestParam(value = "user", required = true) String email,
+//                                      @RequestParam(value = "limit", required = false) Long limit,
+//                                      @RequestParam(value = "order", required = false) String order,
+//                                      @RequestParam(value = "since_id", required = false) Long sinceId) {
+//        return new RestResponse(userDAO.listFollowing(email, limit, order, sinceId));
+//    }
+//
+//    @RequestMapping(value = "/listPosts", method = RequestMethod.GET)
+//    public RestResponse listPosts(@RequestParam(value = "user", required = true) String email,
+//                                  @RequestParam(value = "limit", required = false) Long limit,
+//                                  @RequestParam(value = "order", required = false) String order,
+//                                  @RequestParam(value = "since", required = false) String since){
+//        return new RestResponse(userDAO.listPosts(email, limit, order, since));
+//    }
 }
