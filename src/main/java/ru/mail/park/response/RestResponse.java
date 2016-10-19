@@ -15,6 +15,10 @@ public class RestResponse {
         this.response = reply.getObject();
     }
 
+    public RestResponse(Map response) {
+        this.response = response;
+    }
+
     public RestResponse(String response) {
         this.response = response;
     }

@@ -7,6 +7,8 @@ import ru.mail.park.response.Status;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -33,6 +35,27 @@ public class BaseDAOImpl implements BaseDAO {
         } catch (Exception e) {
             new Reply(Status.UNKNOWN_ERROR);
         }
+    }
+
+    @Override
+    public long getAmount() {
+        long count;
+        try (Connection connection = dataSource.getConnection()) {
+            String query = new StringBuilder("SELECT COUNT(*) AS Number FROM ")
+                    .append(tableName).toString();
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    resultSet.next();
+                    count = resultSet.getLong("Number");
+                }
+            } catch (SQLException e) {
+                return -1;
+            }
+        } catch (Exception e) {
+            return -1;
+        }
+
+        return count;
     }
 
     protected Reply handeSQLException(SQLException e) {

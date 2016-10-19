@@ -252,7 +252,6 @@
       <default-expression>&apos;0&apos;</default-expression>
     </column>
     <column id="65" parent="8" name="message">
-      <mandatory>1</mandatory>
       <data-type>text|0</data-type>
     </column>
     <column id="66" parent="8" name="parent">

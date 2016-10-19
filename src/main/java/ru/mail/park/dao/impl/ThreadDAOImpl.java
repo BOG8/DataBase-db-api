@@ -11,9 +11,7 @@ import ru.mail.park.response.Status;
 
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by zac on 15.10.16.
@@ -370,18 +368,65 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                     query.append("LIMIT ");
                     query.append(limit);
                 }
-            }
 
-            try(PreparedStatement ps = connection.prepareStatement(query.toString())) {
-                ps.setLong(1, threadId);
-                try (ResultSet resultSet = ps.executeQuery()) {
-                    while (resultSet.next()) {
-                        posts.add(new Post(resultSet));
+                try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                    ps.setLong(1, threadId);
+                    try (ResultSet resultSet = ps.executeQuery()) {
+                        while (resultSet.next()) {
+                            posts.add(new Post(resultSet));
+                        }
                     }
+                } catch (SQLException e) {
+                    return handeSQLException(e);
                 }
-            } catch (SQLException e) {
-                return handeSQLException(e);
             }
+//            else if (sort.equals("tree")) {
+//                try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+//                    ps.setLong(1, threadId);
+//                    try (ResultSet resultSet = ps.executeQuery()) {
+//                        ArrayList<Post> noParrentPosts = new ArrayList<>();
+//                        ArrayList<Post> parrentPosts = new ArrayList<>();
+//                        while (resultSet.next()) {
+//                            Post post = new Post(resultSet);
+//                            if (post.getParent() == null) {
+//                                noParrentPosts.add(post);
+//                            } else {
+//                                parrentPosts.add(post);
+//                            }
+//                            Collections.sort(noParrentPosts, new Comparator<Post>() {
+//                                public int compare(Post post1, Post post2) {
+//                                    return post1.getDate().compareToIgnoreCase(post2.getDate());
+//                                }
+//                            });
+//                            Collections.sort(parrentPosts, new Comparator<Post>() {
+//                                public int compare(Post post1, Post post2) {
+//                                    return post1.getDate().compareToIgnoreCase(post2.getDate());
+//                                }
+//                            });
+//                            if (order.equals("asc"))
+//                                Collections.reverse(noParrentPosts);
+//                        }
+//                        ArrayList<Long> stek = new ArrayList<>();
+//                        int noParrentInd = 0;
+//                        int maxNumb = 0;
+//                        for (int i = 0; i < limit; i++) {
+//                            if (stek.size() == 0) {
+//                                posts.add(noParrentPosts.get(noParrentInd));
+//                                noParrentInd++;
+//                                stek.add(noParrentPosts.get(noParrentInd).getParent());
+//                                maxNumb++;
+//                            } else {
+//                                for (Post tempPost: parrentPosts) {
+//
+//                                }
+//                            }
+//                        }
+//
+//                    }
+//                } catch (SQLException e) {
+//                    return handeSQLException(e);
+//                }
+//            }
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }

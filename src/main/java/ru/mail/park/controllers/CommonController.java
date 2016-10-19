@@ -33,4 +33,9 @@ public class CommonController extends BaseController {
         commonDAO.truncateAllTables();
         return new RestResponse("OK");
     }
+
+    @RequestMapping(value = "/status", method = RequestMethod.GET)
+    public RestResponse status() {
+        return new RestResponse(commonDAO.getAmounts());
+    }
 }

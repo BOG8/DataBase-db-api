@@ -175,6 +175,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
                 query.append(" ");
             }
 
+            query.append("GROUP BY U.email ");
             query.append("ORDER BY U.name ");
             if (order != null) {
                 if (order.equals("asc")) {
@@ -229,6 +230,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
                 query.append(" ");
             }
 
+            query.append("GROUP BY U.email ");
             query.append("ORDER BY U.name ");
             if (order != null) {
                 if (order.equals("asc")) {

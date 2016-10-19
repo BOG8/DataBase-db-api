@@ -202,6 +202,56 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
 
     @Override
     public Reply listUsers(String forum, Long sinceId, Long limit, String order) {
-        return null;
+        ArrayList<User> users = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection()) {
+            StringBuilder query = new StringBuilder("SELECT U.*, ")
+                    .append("group_concat(distinct JUF1.follower) AS followers, ")
+                    .append("group_concat(distinct JUF2.user) AS following, ")
+                    .append("group_concat(distinct JUS.thread) AS subscriptions\n")
+                    .append("FROM Thread UT\n")
+                    .append("JOIN User U ON U.email = UT.user\n")
+                    .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.user\n")
+                    .append("LEFT JOIN Followers JUF2 ON U.email = JUF2.follower\n")
+                    .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
+                    .append("WHERE UT.forum = ? ");
+
+            if (sinceId != null) {
+                query.append("AND U.id >= ");
+                query.append(sinceId);
+                query.append(" ");
+            }
+            query.append("GROUP BY U.email ");
+            query.append("ORDER BY U.name ");
+            if (order != null) {
+                if (order.equals("asc")) {
+                    query.append("ASC ");
+                } else {
+                    query.append("DESC ");
+                }
+            } else {
+                query.append("DESC ");
+            }
+
+            if (limit != null) {
+                query.append("LIMIT ");
+                query.append(limit);
+            }
+
+            try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                ps.setString(1, forum);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        User temp = new User(resultSet);
+                        users.add(temp);
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+        } catch (Exception e) {
+            return new Reply(Status.INVALID_REQUEST);
+        }
+
+        return new Reply(Status.OK, users);
     }
 }
