@@ -25,6 +25,8 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
 
     @Override
     public Reply create(String jsonString) {
+        System.out.println("Создаём Post");
+        System.out.println(jsonString);
         final Post post;
         try (Connection connection = dataSource.getConnection()){
             post = new Post(new JsonParser().parse(jsonString).getAsJsonObject());
@@ -62,7 +64,7 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
-
+        System.out.println("Post создан\n\n");
         return new Reply(Status.OK, post);
     }
 

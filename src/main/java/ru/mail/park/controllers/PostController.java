@@ -26,16 +26,16 @@ public class PostController extends BaseController {
         postDAO = new PostDAOImpl(dataSource);
     }
 
-//    @RequestMapping(value = "/create", method = RequestMethod.POST)
-//    public RestResponse create(@RequestBody String body) {
-//        return new RestResponse(postDAO.create(body));
-//    }
-//
-//    @RequestMapping(value = "/details", method = RequestMethod.GET)
-//    public RestResponse details(@RequestParam(value = "post", required = true) long postId,
-//                                @RequestParam(value = "related", required = false) String[] related){
-//        return new RestResponse(postDAO.details(postId, related));
-//    }
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public RestResponse create(@RequestBody String body) {
+        return new RestResponse(postDAO.create(body));
+    }
+
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+    public RestResponse details(@RequestParam(value = "post", required = true) long postId,
+                                @RequestParam(value = "related", required = false) String[] related){
+        return new RestResponse(postDAO.details(postId, related));
+    }
 
 //    @RequestMapping(value = "/remove", method = RequestMethod.POST)
 //    public RestResponse remove(@RequestBody String body) {

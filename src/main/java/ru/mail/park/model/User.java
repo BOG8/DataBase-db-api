@@ -44,7 +44,6 @@ public class User {
     }
 
     public User(JsonObject object) {
-//        about = object.get(ABOUT_COLUMN).getAsString();
         try {
             about = object.get(ABOUT_COLUMN).getAsString();
         } catch (Exception e) {
