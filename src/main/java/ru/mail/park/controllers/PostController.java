@@ -47,16 +47,16 @@ public class PostController extends BaseController {
         return new RestResponse(postDAO.restore(body));
     }
 
-//    @RequestMapping(value = "/update", method = RequestMethod.POST)
-//    public RestResponse update(@RequestBody String body){
-//        return new RestResponse(postDAO.update(body));
-//    }
-//
-//    @RequestMapping(value = "/vote", method = RequestMethod.POST)
-//    public RestResponse vote(@RequestBody String body){
-//        return new RestResponse(postDAO.vote(body));
-//    }
-//
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public RestResponse update(@RequestBody String body){
+        return new RestResponse(postDAO.update(body));
+    }
+
+    @RequestMapping(value = "/vote", method = RequestMethod.POST)
+    public RestResponse vote(@RequestBody String body){
+        return new RestResponse(postDAO.vote(body));
+    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET, params = {"forum"})
     public RestResponse listForum(@RequestParam(value = "forum", required = true) String forum,
                                   @RequestParam(value = "since", required = false) String since,
