@@ -42,11 +42,11 @@ public class PostController extends BaseController {
         return new RestResponse(postDAO.remove(body));
     }
 
-//    @RequestMapping(value = "/restore", method = RequestMethod.POST)
-//    public RestResponse restore(@RequestBody String body){
-//        return new RestResponse(postDAO.restore(body));
-//    }
-//
+    @RequestMapping(value = "/restore", method = RequestMethod.POST)
+    public RestResponse restore(@RequestBody String body) {
+        return new RestResponse(postDAO.restore(body));
+    }
+
 //    @RequestMapping(value = "/update", method = RequestMethod.POST)
 //    public RestResponse update(@RequestBody String body){
 //        return new RestResponse(postDAO.update(body));
