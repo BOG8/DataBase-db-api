@@ -26,16 +26,16 @@ public class ThreadController extends BaseController {
         threadDAO = new ThreadDAOImpl(dataSource);
     }
 
-//    @RequestMapping(value = "/create", method = RequestMethod.POST)
-//    public RestResponse create(@RequestBody String body){
-//        return new RestResponse(threadDAO.create(body));
-//    }
-//
-//    @RequestMapping(value = "/details", method = RequestMethod.GET)
-//    public RestResponse details(@RequestParam(value = "thread", required = true) int threadId,
-//                                @RequestParam(value = "related", required = false) String[] related) {
-//        return new RestResponse(threadDAO.details(threadId, related));
-//    }
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public RestResponse create(@RequestBody String body){
+        return new RestResponse(threadDAO.create(body));
+    }
+
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+    public RestResponse details(@RequestParam(value = "thread", required = true) int threadId,
+                                @RequestParam(value = "related", required = false) String[] related) {
+        return new RestResponse(threadDAO.details(threadId, related));
+    }
 
 //    @RequestMapping(value = "/close", method = RequestMethod.POST)
 //    public RestResponse close(@RequestBody String body) {
