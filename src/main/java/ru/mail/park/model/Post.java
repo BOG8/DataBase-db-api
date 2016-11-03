@@ -3,6 +3,7 @@ package ru.mail.park.model;
 import com.google.gson.JsonObject;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Created by zac on 09.10.16.
@@ -25,6 +26,7 @@ public class Post {
     public static final String POINTS_COLUMN = "points";
     public static final String THREAD_COLUMN = "thread";
     public static final String USER_COLUMN = "user";
+    public static final String PATCH_COLUMN = "patch";
 
     private String date;
     private long dislikes;
@@ -41,6 +43,7 @@ public class Post {
     private long points;
     private Object thread;
     private Object user;
+    private String patch;
 
     public Post(JsonObject object) {
         date = object.get(DATE_COLUMN).getAsString();
@@ -62,9 +65,10 @@ public class Post {
         points = 0;
         thread = object.get(THREAD_COLUMN).getAsLong();
         user = object.get(USER_COLUMN).getAsString();
+        patch = null;
     }
 
-    public Post(ResultSet resultSet) throws Exception {
+    public Post(ResultSet resultSet) throws SQLException {
         date = resultSet.getString(DATE_COLUMN).substring(0, 19);
         dislikes = resultSet.getLong(DISLIKES_COLUMN);
         forum = resultSet.getString(FORUM_COLUMN);
@@ -80,6 +84,7 @@ public class Post {
         points = resultSet.getLong(POINTS_COLUMN);
         thread = resultSet.getLong(THREAD_COLUMN);
         user = resultSet.getString(USER_COLUMN);
+        patch = resultSet.getString(PATCH_COLUMN);
         if (parent == 0) {
             parent = null;
         }
@@ -203,5 +208,13 @@ public class Post {
 
     public void setUser(Object user) {
         this.user = user;
+    }
+
+    public String getPatch() {
+        return patch;
+    }
+
+    public void setPatch(String patch) {
+        this.patch = patch;
     }
 }

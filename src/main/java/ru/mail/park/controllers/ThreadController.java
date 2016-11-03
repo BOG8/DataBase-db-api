@@ -47,15 +47,15 @@ public class ThreadController extends BaseController {
         return new RestResponse(threadDAO.open(body));
     }
 
-//    @RequestMapping(value = "/remove", method = RequestMethod.POST)
-//    public RestResponse remove(@RequestBody String body) {
-//        return new RestResponse(threadDAO.remove(body));
-//    }
-//
-//    @RequestMapping(value = "/restore", method = RequestMethod.POST)
-//    public RestResponse restore(@RequestBody String body) {
-//        return new RestResponse(threadDAO.restore(body));
-//    }
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public RestResponse remove(@RequestBody String body) {
+        return new RestResponse(threadDAO.remove(body));
+    }
+
+    @RequestMapping(value = "/restore", method = RequestMethod.POST)
+    public RestResponse restore(@RequestBody String body) {
+        return new RestResponse(threadDAO.restore(body));
+    }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public RestResponse update(@RequestBody String body) {
@@ -93,13 +93,13 @@ public class ThreadController extends BaseController {
         return new RestResponse(threadDAO.listUser(user, since, limit, order));
     }
 
-//
-//    @RequestMapping(value = "/listPosts", method = RequestMethod.GET)
-//    public RestResponse listPosts(@RequestParam(value = "thread", required = true) Long threadId,
-//                                  @RequestParam(value = "since", required = false) String since,
-//                                  @RequestParam(value = "limit", required = false) Long limit,
-//                                  @RequestParam(value = "sort", required = false) String sort,
-//                                  @RequestParam(value = "order", required = false) String order) {
-//        return new RestResponse(threadDAO.listPosts(threadId, since, limit, sort, order));
-//    }
+
+    @RequestMapping(value = "/listPosts", method = RequestMethod.GET)
+    public RestResponse listPosts(@RequestParam(value = "thread", required = true) Long threadId,
+                                  @RequestParam(value = "since", required = false) String since,
+                                  @RequestParam(value = "limit", required = false) Long limit,
+                                  @RequestParam(value = "sort", required = false) String sort,
+                                  @RequestParam(value = "order", required = false) String order) {
+        return new RestResponse(threadDAO.listPosts(threadId, since, limit, sort, order));
+    }
 }

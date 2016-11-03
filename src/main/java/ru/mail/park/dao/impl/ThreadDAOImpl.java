@@ -74,6 +74,9 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                 return handeSQLException(e);
             }
             if (related != null) {
+                if (Arrays.asList(related).contains("thread")) {
+                    return new Reply(Status.INCORRECT_REQUEST);
+                }
                 if (Arrays.asList(related).contains("forum")) {
                     thread.setForum(new ForumDAOImpl(dataSource).details(thread.getForum().toString(), null).getObject());
                 }
@@ -139,7 +142,7 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
             try {
                 String query = new StringBuilder("UPDATE ")
                         .append(tableName)
-                        .append("  SET isDeleted = 1 WHERE id = ?").toString();
+                        .append(" SET isDeleted = 1, posts = 0 WHERE id = ?").toString();
                 try (PreparedStatement ps = connection.prepareStatement(query)) {
                     ps.setInt(1, thread);
                     ps.execute();
@@ -169,11 +172,23 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                     ps.setInt(1, thread);
                     ps.executeUpdate();
                 }
+
+                Long countPosts = null;
+                query = "SELECT COUNT(*) AS countPosts FROM Post WHERE thread = ?";
+                try(PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setLong(1, thread);
+                    try (ResultSet resultSet = ps.executeQuery()) {
+                        resultSet.next();
+                        countPosts = resultSet.getLong("countPosts");
+                    }
+                }
+
                 query = new StringBuilder("UPDATE ")
                         .append(tableName)
-                        .append("  SET isDeleted = 0  WHERE id = ?").toString();
+                        .append(" SET isDeleted = 0, posts = ? WHERE id = ?").toString();
                 try (PreparedStatement ps = connection.prepareStatement(query)) {
-                    ps.setInt(1, thread);
+                    ps.setLong(1, countPosts);
+                    ps.setInt(2, thread);
                     ps.execute();
                 }
             } catch (SQLException e) {
@@ -344,9 +359,9 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
     @Override
     public Reply listPosts(Long threadId, String since, Long limit, String sort, String order) {
         ArrayList<Post> posts = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection())  {
+        try (Connection connection = dataSource.getConnection()) {
             StringBuilder query = new StringBuilder("SELECT * FROM Post WHERE thread = ? ");
-            if (sort == null || sort.equals("flat") || true) {
+            if (sort == null || sort.equals("flat")) {
                 if (since != null) {
                     query.append("AND date >= '");
                     query.append(since);
@@ -375,58 +390,43 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                         while (resultSet.next()) {
                             posts.add(new Post(resultSet));
                         }
+                        return new Reply(Status.OK, posts);
                     }
                 } catch (SQLException e) {
                     return handeSQLException(e);
                 }
             }
-//            else if (sort.equals("tree")) {
-//                try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
-//                    ps.setLong(1, threadId);
-//                    try (ResultSet resultSet = ps.executeQuery()) {
-//                        ArrayList<Post> noParrentPosts = new ArrayList<>();
-//                        ArrayList<Post> parrentPosts = new ArrayList<>();
-//                        while (resultSet.next()) {
-//                            Post post = new Post(resultSet);
-//                            if (post.getParent() == null) {
-//                                noParrentPosts.add(post);
-//                            } else {
-//                                parrentPosts.add(post);
-//                            }
-//                            Collections.sort(noParrentPosts, new Comparator<Post>() {
-//                                public int compare(Post post1, Post post2) {
-//                                    return post1.getDate().compareToIgnoreCase(post2.getDate());
-//                                }
-//                            });
-//                            Collections.sort(parrentPosts, new Comparator<Post>() {
-//                                public int compare(Post post1, Post post2) {
-//                                    return post1.getDate().compareToIgnoreCase(post2.getDate());
-//                                }
-//                            });
-//                            if (order.equals("asc"))
-//                                Collections.reverse(noParrentPosts);
-//                        }
-//                        ArrayList<Long> stek = new ArrayList<>();
-//                        int noParrentInd = 0;
-//                        int maxNumb = 0;
-//                        for (int i = 0; i < limit; i++) {
-//                            if (stek.size() == 0) {
-//                                posts.add(noParrentPosts.get(noParrentInd));
-//                                noParrentInd++;
-//                                stek.add(noParrentPosts.get(noParrentInd).getParent());
-//                                maxNumb++;
-//                            } else {
-//                                for (Post tempPost: parrentPosts) {
-//
-//                                }
-//                            }
-//                        }
-//
-//                    }
-//                } catch (SQLException e) {
-//                    return handeSQLException(e);
-//                }
-//            }
+
+            if (sort.equals("tree") || true) {
+                if (order == null || order.equals("desc")) {
+
+                } else {
+                    if (since != null) {
+                        query.append("AND date >= '");
+                        query.append(since);
+                        query.append("' ");
+                    }
+
+                    query.append("ORDER BY patch ");
+                    query.append("ASC ");
+
+                    if (limit != null) {
+                        query.append("LIMIT ");
+                        query.append(limit);
+                    }
+                }
+
+                try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                    ps.setLong(1, threadId);
+                    try (ResultSet resultSet = ps.executeQuery()) {
+                        while (resultSet.next()) {
+                            posts.add(new Post(resultSet));
+                        }
+                    }
+                } catch (SQLException e) {
+                    return handeSQLException(e);
+                }
+            }
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }

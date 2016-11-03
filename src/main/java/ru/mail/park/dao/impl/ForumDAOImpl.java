@@ -208,12 +208,12 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
                     .append("group_concat(distinct JUF1.follower) AS followers, ")
                     .append("group_concat(distinct JUF2.user) AS following, ")
                     .append("group_concat(distinct JUS.thread) AS subscriptions\n")
-                    .append("FROM Thread UT\n")
-                    .append("JOIN User U ON U.email = UT.user\n")
+                    .append("FROM Post UP\n")
+                    .append("JOIN User U ON U.email = UP.user\n")
                     .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.user\n")
                     .append("LEFT JOIN Followers JUF2 ON U.email = JUF2.follower\n")
                     .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
-                    .append("WHERE UT.forum = ? ");
+                    .append("WHERE UP.forum = ? ");
 
             if (sinceId != null) {
                 query.append("AND U.id >= ");
