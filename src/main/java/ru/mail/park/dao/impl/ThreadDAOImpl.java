@@ -355,13 +355,13 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
         return new Reply(Status.OK, threads);
     }
 
-    // Работает только flat сортировка!!! (true в if-else конструкции)
     @Override
     public Reply listPosts(Long threadId, String since, Long limit, String sort, String order) {
         ArrayList<Post> posts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection()) {
-            StringBuilder query = new StringBuilder("SELECT * FROM Post WHERE thread = ? ");
             if (sort == null || sort.equals("flat")) {
+                StringBuilder query = new StringBuilder("SELECT * FROM Post WHERE thread = ? ");
+
                 if (since != null) {
                     query.append("AND date >= '");
                     query.append(since);
@@ -397,10 +397,72 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                 }
             }
 
-            if (sort.equals("tree") || true) {
+            if (sort.equals("tree")) {
+                StringBuilder query = new StringBuilder();
                 if (order == null || order.equals("desc")) {
+                    System.out.println("TREE SORT DESC START");
+                    query.append("SELECT patch FROM Post WHERE thread = ? ");
 
+                    if (since != null) {
+                        query.append("AND date >= '");
+                        query.append(since);
+                        query.append("' ");
+                    }
+
+                    query.append("AND patch LIKE '____' ");
+                    query.append("ORDER BY patch DESC ");
+
+                    if (limit != null) {
+                        query.append("LIMIT ");
+                        query.append(limit);
+                    }
+
+                    ArrayList<String> patches = new ArrayList<>();
+                    try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                        ps.setLong(1, threadId);
+                        try (ResultSet resultSet = ps.executeQuery()) {
+                            while (resultSet.next()) {
+                                patches.add(resultSet.getString("patch"));
+                            }
+                        }
+                    } catch (SQLException e) {
+                        return handeSQLException(e);
+                    }
+
+                    System.out.println("PATCHES: ");
+                    for (int i = 0; i < patches.size(); i++) {
+                        System.out.println(patches.get(i) + ",");
+                    }
+
+                    if (limit != null) {
+                        for (int i = 0; i < patches.size() && posts.size() < limit; i++) {
+                            long currentLimit = limit - posts.size();
+                            StringBuilder unionQuery = new StringBuilder();
+                            unionQuery.append("SELECT * FROM Post WHERE thread = ? AND patch LIKE '");
+                            unionQuery.append(patches.get(i));
+                            unionQuery.append("%' ORDER BY patch ASC LIMIT ");
+                            unionQuery.append(currentLimit);
+
+                            System.out.println(unionQuery);
+
+                            try (PreparedStatement ps = connection.prepareStatement(unionQuery.toString())) {
+                                ps.setLong(1, threadId);
+                                try (ResultSet resultSet = ps.executeQuery()) {
+                                    while (resultSet.next()) {
+                                        posts.add(new Post(resultSet));
+                                    }
+                                }
+                            } catch (SQLException e) {
+                                return handeSQLException(e);
+                            }
+                        }
+                    } else {
+                        // При limit == null будет перевод на parent_sort DESC
+                    }
+                    
                 } else {
+                    query.append("SELECT * FROM Post WHERE thread = ? ");
+
                     if (since != null) {
                         query.append("AND date >= '");
                         query.append(since);
@@ -414,18 +476,90 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                         query.append("LIMIT ");
                         query.append(limit);
                     }
+
+                    try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                        ps.setLong(1, threadId);
+                        try (ResultSet resultSet = ps.executeQuery()) {
+                            while (resultSet.next()) {
+                                posts.add(new Post(resultSet));
+                            }
+                        }
+                    } catch (SQLException e) {
+                        return handeSQLException(e);
+                    }
                 }
 
+            }
+
+            if (sort.equals("parent_tree")) {
+                System.out.println("PARENT TREE SORT START");
+                StringBuilder query = new StringBuilder("SELECT patch FROM Post WHERE thread = ? ");
+
+                if (since != null) {
+                    query.append("AND date >= '");
+                    query.append(since);
+                    query.append("' ");
+                }
+
+                query.append("AND patch LIKE '____' ");
+
+                query.append("ORDER BY patch ");
+                if (order != null) {
+                    if (order.equals("asc")) {
+                        query.append("ASC ");
+                    } else {
+                        query.append("DESC ");
+                    }
+                } else {
+                    query.append("DESC ");
+                }
+
+                if (limit != null) {
+                    query.append("LIMIT ");
+                    query.append(limit);
+                }
+
+                ArrayList<String> patches = new ArrayList<>();
                 try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
                     ps.setLong(1, threadId);
                     try (ResultSet resultSet = ps.executeQuery()) {
                         while (resultSet.next()) {
-                            posts.add(new Post(resultSet));
+                            patches.add(resultSet.getString("patch"));
                         }
                     }
                 } catch (SQLException e) {
                     return handeSQLException(e);
                 }
+                System.out.println("PATCHES: ");
+                for (int i = 0; i < patches.size(); i++) {
+                    System.out.println(patches.get(i) + ",");
+                }
+
+                for (int i = 0; i < patches.size(); i++) {
+                    StringBuilder unionQuery = new StringBuilder();
+                    unionQuery.append("SELECT * FROM Post WHERE thread = ? AND patch LIKE '");
+                    unionQuery.append(patches.get(i));
+                    unionQuery.append("%' ORDER BY patch ASC");
+
+                    System.out.println(unionQuery);
+
+                    try (PreparedStatement ps = connection.prepareStatement(unionQuery.toString())) {
+                        ps.setLong(1, threadId);
+                        try (ResultSet resultSet = ps.executeQuery()) {
+                            while (resultSet.next()) {
+                                posts.add(new Post(resultSet));
+                            }
+                        }
+                    } catch (SQLException e) {
+                        return handeSQLException(e);
+                    }
+                }
+
+                System.out.println("POST PATCHES: ");
+                for (int i = 0; i < posts.size(); i++) {
+                    System.out.println(posts.get(i).getPatch() + ",");
+                }
+                System.out.println("PARENT TREE SORT END");
             }
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
