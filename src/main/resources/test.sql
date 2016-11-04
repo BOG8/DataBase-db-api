@@ -1,1 +1,0 @@
-insert into Forum (bigg, short_name, name, user) values(5, 'g', 'GGGGGG...', 'g@gmail.com');

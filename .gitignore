@@ -23,7 +23,7 @@
 #
 .tp_java_new.xml
 /.idea/
-/L1.3.iml
+*.iml
 
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
