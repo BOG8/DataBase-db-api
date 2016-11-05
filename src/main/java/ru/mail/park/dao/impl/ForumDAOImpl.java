@@ -1,7 +1,6 @@
 package ru.mail.park.dao.impl;
 
 import com.google.gson.JsonParser;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import ru.mail.park.dao.ForumDAO;
 import ru.mail.park.model.Post;
 import ru.mail.park.model.Thread;
