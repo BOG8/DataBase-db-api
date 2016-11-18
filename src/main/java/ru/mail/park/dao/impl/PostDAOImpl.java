@@ -27,8 +27,6 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
 
     @Override
     public Reply create(String jsonString) {
-        System.out.println("Создаём Post");
-        System.out.println(jsonString);
         final Post post;
         try (Connection connection = dataSource.getConnection()) {
             post = new Post(new JsonParser().parse(jsonString).getAsJsonObject());
@@ -46,13 +44,11 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
                     }
                 }
             }
-            System.out.println("Получили parentPatch = " + parentPatch);
 
             StringBuilder buildedQuery = new StringBuilder("SELECT MAX(patch) AS Max_patch FROM ")
                     .append(tableName)
                     .append(" WHERE thread = ? AND patch LIKE '");
             if (!parentPatch.equals("")) {
-                System.out.println("parentPatch != null");
                 buildedQuery.append(parentPatch);
             }
             buildedQuery.append("____'");
@@ -65,17 +61,13 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
                     maxPatch = resultSet.getString("Max_patch");
                 }
             }
-            System.out.println("Получили maxPatch = " + maxPatch);
 
             String resultPatch;
             if (maxPatch != null) {
-                System.out.println("maxPatch != null");
                 resultPatch = incPatch(maxPatch);
             } else {
-                System.out.println("maxPatch == null");
                 resultPatch = parentPatch + "0001";
             }
-            System.out.println("Получили resultPatch = " + resultPatch);
 
             String query = new StringBuilder("INSERT INTO ")
                     .append(tableName)
@@ -113,7 +105,7 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
-        System.out.println("Post создан\n\n");
+
         return new Reply(Status.OK, post);
     }
 

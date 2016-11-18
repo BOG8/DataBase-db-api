@@ -26,8 +26,6 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
 
     @Override
     public Reply create(String jsonString) {
-        System.out.println("Создаём юзера");
-        System.out.println(jsonString);
         final User user;
         try (Connection connection = dataSource.getConnection()){
             user = new User(new JsonParser().parse(jsonString).getAsJsonObject());
@@ -51,7 +49,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
-        System.out.println("Создали юзера\n\n");
+
         return new Reply(Status.OK, user);
     }
 
@@ -66,7 +64,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
                     .append("FROM User U\n")
                     .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.user\n")
                     .append("LEFT JOIN Followers JUF2 ON U.email = JUF2.follower\n")
-                    .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
+                    .append("LEFT JOIN Subscriptions JUS ON U.email = JUS.user\n")
                     .append("WHERE U.email = ?").toString();
             try (PreparedStatement ps = connection.prepareStatement(query)) {
                 ps.setString(1, email);

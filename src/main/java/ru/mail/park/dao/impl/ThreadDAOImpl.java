@@ -120,7 +120,7 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
             try {
                 String query = new StringBuilder("UPDATE ")
                         .append(tableName)
-                        .append("  SET isClosed = 0 WHERE id = ?").toString();
+                        .append(" SET isClosed = 0 WHERE id = ?").toString();
                 try (PreparedStatement ps = connection.prepareStatement(query)) {
                     ps.setInt(1, thread);
                     ps.execute();
@@ -400,7 +400,6 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
             if (sort.equals("tree")) {
                 StringBuilder query = new StringBuilder();
                 if (order == null || order.equals("desc")) {
-                    System.out.println("TREE SORT DESC START");
                     query.append("SELECT patch FROM Post WHERE thread = ? ");
 
                     if (since != null) {
@@ -429,11 +428,6 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                         return handeSQLException(e);
                     }
 
-                    System.out.println("PATCHES: ");
-                    for (int i = 0; i < patches.size(); i++) {
-                        System.out.println(patches.get(i) + ",");
-                    }
-
                     if (limit != null) {
                         for (int i = 0; i < patches.size() && posts.size() < limit; i++) {
                             long currentLimit = limit - posts.size();
@@ -442,8 +436,6 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                             unionQuery.append(patches.get(i));
                             unionQuery.append("%' ORDER BY patch ASC LIMIT ");
                             unionQuery.append(currentLimit);
-
-                            System.out.println(unionQuery);
 
                             try (PreparedStatement ps = connection.prepareStatement(unionQuery.toString())) {
                                 ps.setLong(1, threadId);
@@ -459,7 +451,7 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                     } else {
                         // При limit == null будет перевод на parent_sort DESC
                     }
-                    
+
                 } else {
                     query.append("SELECT * FROM Post WHERE thread = ? ");
 
@@ -492,7 +484,6 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
             }
 
             if (sort.equals("parent_tree")) {
-                System.out.println("PARENT TREE SORT START");
                 StringBuilder query = new StringBuilder("SELECT patch FROM Post WHERE thread = ? ");
 
                 if (since != null) {
@@ -530,18 +521,12 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                 } catch (SQLException e) {
                     return handeSQLException(e);
                 }
-                System.out.println("PATCHES: ");
-                for (int i = 0; i < patches.size(); i++) {
-                    System.out.println(patches.get(i) + ",");
-                }
 
                 for (int i = 0; i < patches.size(); i++) {
                     StringBuilder unionQuery = new StringBuilder();
                     unionQuery.append("SELECT * FROM Post WHERE thread = ? AND patch LIKE '");
                     unionQuery.append(patches.get(i));
                     unionQuery.append("%' ORDER BY patch ASC");
-
-                    System.out.println(unionQuery);
 
                     try (PreparedStatement ps = connection.prepareStatement(unionQuery.toString())) {
                         ps.setLong(1, threadId);
@@ -554,12 +539,6 @@ public class ThreadDAOImpl extends BaseDAOImpl implements ThreadDAO {
                         return handeSQLException(e);
                     }
                 }
-
-                System.out.println("POST PATCHES: ");
-                for (int i = 0; i < posts.size(); i++) {
-                    System.out.println(posts.get(i).getPatch() + ",");
-                }
-                System.out.println("PARENT TREE SORT END");
             }
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
