@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
--- Host: localhost    Database: testDBFUNC
+-- Host: localhost    Database: testDBPERF
 -- ------------------------------------------------------
 -- Server version	5.7.16-0ubuntu0.16.04.1
 
@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `Followers`;
 CREATE TABLE `Followers` (
   `user` varchar(255) NOT NULL,
   `follower` varchar(255) NOT NULL,
-  PRIMARY KEY (`user`,`follower`),
-  KEY `Followers_follower_index` (`follower`)
+  PRIMARY KEY (`follower`,`user`),
+  KEY `Followers_user_index` (`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -43,7 +43,7 @@ CREATE TABLE `Forum` (
   `short_name` varchar(255) NOT NULL,
   `user` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1287 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,13 +71,12 @@ CREATE TABLE `Post` (
   `user` varchar(255) NOT NULL,
   `patch` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Post_thread_date_patch_index` (`thread`,`date`,`patch`),
-  KEY `Post_forum_date_index` (`forum`,`date`),
   KEY `Post_user_date_index` (`user`,`date`),
+  KEY `Post_forum_date_index` (`forum`,`date`),
   KEY `Post_user_forum_index` (`user`,`forum`),
-  KEY `Post_forum_user_index` (`forum`,`user`),
-  KEY `Post_thread_patch_index` (`thread`,`patch`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+  KEY `Post_thread_patch_index` (`thread`,`patch`),
+  KEY `Post_thread_date_index` (`thread`,`date`)
+) ENGINE=InnoDB AUTO_INCREMENT=1009827 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +117,7 @@ CREATE TABLE `Thread` (
   PRIMARY KEY (`id`),
   KEY `Thread_forum_date_index` (`forum`,`date`),
   KEY `Thread_user_date_index` (`user`,`date`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10561 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,9 +134,9 @@ CREATE TABLE `User` (
   `isAnonymous` tinyint(1) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `User_email_uindex` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`,`email`),
+  KEY `User_email_id_index` (`email`,`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=104135 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -149,4 +148,4 @@ CREATE TABLE `User` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-18 22:09:18
+-- Dump completed on 2016-11-24  0:32:31
