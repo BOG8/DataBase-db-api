@@ -70,7 +70,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
                 ps.setString(1, email);
                 try (ResultSet resultSet = ps.executeQuery()) {
                     resultSet.next();
-                    user = new User(resultSet);
+                    user = new User(resultSet, true);
                 } catch (Exception e) {
                     return new Reply(Status.NOT_FOUND);
                 }
@@ -196,7 +196,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
                 ps.setString(1, email);
                 try (ResultSet resultSet = ps.executeQuery()) {
                     while (resultSet.next()) {
-                        followers.add(new User(resultSet));
+                        followers.add(new User(resultSet, true));
                     }
                 }
             } catch (SQLException e) {
@@ -251,7 +251,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
                 ps.setString(1, email);
                 try (ResultSet resultSet = ps.executeQuery()) {
                     while (resultSet.next()) {
-                        followers.add(new User(resultSet));
+                        followers.add(new User(resultSet, true));
                     }
                 }
             } catch (SQLException e) {

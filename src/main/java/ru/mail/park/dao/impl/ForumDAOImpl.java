@@ -203,15 +203,8 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
     public Reply listUsers(String forum, Long sinceId, Long limit, String order) {
         ArrayList<User> users = new ArrayList<>();
         try (Connection connection = dataSource.getConnection()) {
-            StringBuilder query = new StringBuilder("SELECT U.*, ")
-                    .append("group_concat(distinct JUF1.follower) AS followers, ")
-                    .append("group_concat(distinct JUF2.user) AS following, ")
-                    .append("group_concat(distinct JUS.thread) AS subscriptions\n")
-                    .append("FROM Post UP\n")
+            StringBuilder query = new StringBuilder("SELECT U.* FROM Post UP\n")
                     .append("JOIN User U ON U.email = UP.user\n")
-                    .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.user\n")
-                    .append("LEFT JOIN Followers JUF2 ON U.email = JUF2.follower\n")
-                    .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
                     .append("WHERE UP.forum = ? ");
 
             if (sinceId != null) {
@@ -240,13 +233,37 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
                 ps.setString(1, forum);
                 try (ResultSet resultSet = ps.executeQuery()) {
                     while (resultSet.next()) {
-                        User temp = new User(resultSet);
+                        User temp = new User(resultSet, false);
                         users.add(temp);
                     }
                 }
             } catch (SQLException e) {
                 return handeSQLException(e);
             }
+
+            query = new StringBuilder("SELECT ")
+                    .append("group_concat(distinct JUF1.follower) AS followers, ")
+                    .append("group_concat(distinct JUF2.user) AS following, ")
+                    .append("group_concat(distinct JUS.thread) AS subscriptions\n")
+                    .append("FROM User U\n")
+                    .append("LEFT JOIN Followers JUF1 ON U.email = JUF1.user\n")
+                    .append("LEFT JOIN Followers JUF2 ON U.email = JUF2.follower\n")
+                    .append("LEFT JOIN Subscriptions JUS ON U.email= JUS.user\n")
+                    .append("WHERE U.email = ? ");
+
+            try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                for (User user: users) {
+                    ps.setString(1, user.getEmail());
+                    try (ResultSet resultSet = ps.executeQuery()) {
+                        while (resultSet.next()) {
+                            user.setAdditionalInfo(resultSet);
+                        }
+                    }
+                }
+            } catch (SQLException e) {
+                return handeSQLException(e);
+            }
+
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);
         }
