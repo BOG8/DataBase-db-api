@@ -203,7 +203,7 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
     public Reply listUsers(String forum, Long sinceId, Long limit, String order) {
         ArrayList<User> users = new ArrayList<>();
         try (Connection connection = dataSource.getConnection()) {
-            StringBuilder query = new StringBuilder("SELECT DISTINCT U.* FROM User U\n")
+            StringBuilder query = new StringBuilder("SELECT U.* FROM User U\n")
                     .append("JOIN Post UP ON U.email = UP.user\n")
                     .append("WHERE UP.forum = ? ");
 
@@ -213,6 +213,7 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
                 query.append(" ");
             }
 
+            query.append("GROUP BY U.email ");
             query.append("ORDER BY U.name ");
             if (order != null) {
                 if (order.equals("asc")) {
