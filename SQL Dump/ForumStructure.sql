@@ -42,8 +42,9 @@ CREATE TABLE `Forum` (
   `name` varchar(255) NOT NULL,
   `short_name` varchar(255) NOT NULL,
   `user` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1287 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `Forum_short_name_index` (`short_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=1632 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,10 +74,10 @@ CREATE TABLE `Post` (
   PRIMARY KEY (`id`),
   KEY `Post_user_date_index` (`user`,`date`),
   KEY `Post_forum_date_index` (`forum`,`date`),
-  KEY `Post_user_forum_index` (`user`,`forum`),
   KEY `Post_thread_patch_index` (`thread`,`patch`),
+  KEY `Post_forum_user_index` (`forum`,`user`),
   KEY `Post_thread_date_index` (`thread`,`date`)
-) ENGINE=InnoDB AUTO_INCREMENT=1009827 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1010207 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +118,7 @@ CREATE TABLE `Thread` (
   PRIMARY KEY (`id`),
   KEY `Thread_forum_date_index` (`forum`,`date`),
   KEY `Thread_user_date_index` (`user`,`date`)
-) ENGINE=InnoDB AUTO_INCREMENT=10561 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10979 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +137,7 @@ CREATE TABLE `User` (
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`,`email`),
   KEY `User_email_id_index` (`email`,`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=104135 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=104482 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -148,4 +149,4 @@ CREATE TABLE `User` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-24  0:32:31
+-- Dump completed on 2016-12-05  9:45:05
