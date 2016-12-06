@@ -231,22 +231,14 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
             }
 
             try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
-                System.out.println("\n\nPS");
-                System.out.println(query);
                 ps.setString(1, forum);
-                System.out.println("ForumSet");
                 try (ResultSet resultSet = ps.executeQuery()) {
-                    System.out.println("ResultSet");
                     while (resultSet.next()) {
-                        System.out.println("While");
                         User temp = new User(resultSet, false);
-                        System.out.println("User");
                         users.add(temp);
-                        System.out.println("AddUser");
                     }
                 }
             } catch (SQLException e) {
-                System.out.println("Exeption");
                 return handeSQLException(e);
             }
 
