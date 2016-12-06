@@ -95,12 +95,22 @@ public class PostDAOImpl extends BaseDAOImpl implements PostDAO {
             } catch (SQLException e) {
                 return handeSQLException(e);
             }
+
             query = "UPDATE Thread SET posts = posts + 1 WHERE id = ?";
             try (PreparedStatement ps = connection.prepareStatement(query)) {
                 ps.setLong(1, Long.parseLong(post.getThread().toString()));
                 ps.executeUpdate();
             } catch (SQLException e) {
                 return new Reply(Status.NOT_FOUND);
+            }
+
+            query = "INSERT INTO UsersOfForum(forum, email) VALUES (?, ?)";
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setString(1, post.getForum().toString());
+                ps.setString(2, post.getUser().toString());
+                ps.executeUpdate();
+            } catch (SQLException e) {
+
             }
         } catch (Exception e) {
             return new Reply(Status.INVALID_REQUEST);

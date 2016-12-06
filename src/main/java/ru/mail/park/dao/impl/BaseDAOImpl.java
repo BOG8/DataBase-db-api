@@ -31,6 +31,9 @@ public class BaseDAOImpl implements BaseDAO {
             if (tableName == "Thread") {
                 Truncator.truncByQuery(connection, "TRUNCATE TABLE Subscriptions");
             }
+            if (tableName == "Post") {
+                Truncator.truncByQuery(connection, "TRUNCATE TABLE UsersOfForum");
+            }
             Truncator.truncByQuery(connection, "SET FOREIGN_KEY_CHECKS = 1;");
         } catch (Exception e) {
             new Reply(Status.UNKNOWN_ERROR);

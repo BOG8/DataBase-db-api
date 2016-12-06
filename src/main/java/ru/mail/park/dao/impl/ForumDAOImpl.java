@@ -204,8 +204,8 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
         ArrayList<User> users = new ArrayList<>();
         try (Connection connection = dataSource.getConnection()) {
             StringBuilder query = new StringBuilder("SELECT U.* FROM User U\n")
-                    .append("JOIN Post UP ON U.email = UP.user\n")
-                    .append("WHERE UP.forum = ? ");
+                    .append("JOIN UsersOfForum UF ON U.email = UF.email\n")
+                    .append("WHERE UF.forum = ? ");
 
             if (sinceId != null) {
                 query.append("AND U.id >= ");
@@ -213,7 +213,7 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
                 query.append(" ");
             }
 
-            query.append("GROUP BY UP.user ");
+            query.append("GROUP BY U.email ");
             query.append("ORDER BY U.name ");
             if (order != null) {
                 if (order.equals("asc")) {
@@ -231,14 +231,22 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
             }
 
             try (PreparedStatement ps = connection.prepareStatement(query.toString())) {
+                System.out.println("\n\nPS");
+                System.out.println(query);
                 ps.setString(1, forum);
+                System.out.println("ForumSet");
                 try (ResultSet resultSet = ps.executeQuery()) {
+                    System.out.println("ResultSet");
                     while (resultSet.next()) {
+                        System.out.println("While");
                         User temp = new User(resultSet, false);
+                        System.out.println("User");
                         users.add(temp);
+                        System.out.println("AddUser");
                     }
                 }
             } catch (SQLException e) {
+                System.out.println("Exeption");
                 return handeSQLException(e);
             }
 
