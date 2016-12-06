@@ -213,7 +213,7 @@ public class ForumDAOImpl extends BaseDAOImpl implements ForumDAO {
                 query.append(" ");
             }
 
-            query.append("GROUP BY U.email ");
+            query.append("GROUP BY UP.user ");
             query.append("ORDER BY U.name ");
             if (order != null) {
                 if (order.equals("asc")) {
